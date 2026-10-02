@@ -8,7 +8,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
 
 body{
 font-family:Arial,sans-serif;
@@ -40,7 +44,9 @@ font-size:23px;
 font-weight:900;
 }
 
-.logo span{color:#9c8cff}
+.logo span{
+color:#9c8cff;
+}
 
 .nav a{
 color:#aaa;
@@ -105,7 +111,9 @@ font-weight:bold;
 border-radius:0 12px 12px 0;
 }
 
-.section{margin-top:45px}
+.section{
+margin-top:45px;
+}
 
 .title{
 display:flex;
@@ -209,11 +217,17 @@ height:100%;
 object-fit:cover;
 }
 
-.info{padding:16px}
+.info{
+padding:16px;
+}
 
-.info small{color:#777}
+.info small{
+color:#777;
+}
 
-.info h3{margin:7px 0}
+.info h3{
+margin:7px 0;
+}
 
 .price{
 font-size:19px;
@@ -307,7 +321,8 @@ margin-bottom:18px;
 margin-bottom:15px;
 }
 
-input,select{
+input,
+select{
 width:100%;
 padding:12px;
 margin:6px 0 12px;
@@ -522,13 +537,9 @@ Cari
 <section class="section" id="game">
 
 <div class="title">
-
 <h2>Game Populer</h2>
-
 <span>Pilih game</span>
-
 </div>
-
 
 <div class="games">
 
@@ -536,9 +547,7 @@ Cari
 onclick="filterGame('Mobile Legends')">
 
 <div class="icon">ML</div>
-
 <b>Mobile Legends</b>
-
 <p>Diamond</p>
 
 </div>
@@ -548,9 +557,7 @@ onclick="filterGame('Mobile Legends')">
 onclick="filterGame('Free Fire')">
 
 <div class="icon">FF</div>
-
 <b>Free Fire</b>
-
 <p>Diamond</p>
 
 </div>
@@ -560,9 +567,7 @@ onclick="filterGame('Free Fire')">
 onclick="filterGame('PUBG Mobile')">
 
 <div class="icon">PUBG</div>
-
 <b>PUBG Mobile</b>
-
 <p>UC</p>
 
 </div>
@@ -572,9 +577,7 @@ onclick="filterGame('PUBG Mobile')">
 onclick="filterGame('Valorant')">
 
 <div class="icon">VAL</div>
-
 <b>Valorant</b>
-
 <p>Points</p>
 
 </div>
@@ -599,39 +602,49 @@ Memuat...
 
 <div class="tabs">
 
-<button class="active"
+<button
+class="active"
 onclick="setTab('Semua',this)">
 Semua
 </button>
 
-<button onclick="setTab('Terpopuler',this)">
+<button
+onclick="setTab('Terpopuler',this)">
 🔥 Terpopuler
 </button>
 
-<button onclick="setTab('Terbaru',this)">
+<button
+onclick="setTab('Terbaru',this)">
 ✨ Terbaru
 </button>
 
-<button onclick="setTab('Mobile Legends',this)">
+<button
+onclick="setTab('Mobile Legends',this)">
 Mobile Legends
 </button>
 
-<button onclick="setTab('Free Fire',this)">
+<button
+onclick="setTab('Free Fire',this)">
 Free Fire
 </button>
 
-<button onclick="setTab('PUBG Mobile',this)">
+<button
+onclick="setTab('PUBG Mobile',this)">
 PUBG
 </button>
 
-<button onclick="setTab('Valorant',this)">
+<button
+onclick="setTab('Valorant',this)">
 Valorant
 </button>
 
 </div>
 
 
-<div class="products" id="products"></div>
+<div
+class="products"
+id="products">
+</div>
 
 </section>
 
@@ -645,7 +658,8 @@ Valorant
 </footer>
 
 
-<button class="owner"
+<button
+class="owner"
 onclick="openLogin()">
 
 ⚙ DEV / PEMILIK
@@ -655,7 +669,9 @@ onclick="openLogin()">
 
 <!-- LOGIN -->
 
-<div class="login" id="login">
+<div
+class="login"
+id="login">
 
 <div class="login-box">
 
@@ -692,13 +708,15 @@ style="color:#f55;margin-top:12px">
 </div>
 
 
-<!-- ADMIN -->
+<!-- PANEL DEV -->
 
 <div id="admin">
 
 <div class="admin-head">
 
-<b>⚙ PANEL DEV / PEMILIK</b>
+<b>
+⚙ PANEL DEV / PEMILIK
+</b>
 
 <button
 class="admin-btn close"
@@ -714,11 +732,17 @@ Tutup
 
 <div class="admin-card">
 
-<h2>➕ Tambah Produk</h2>
+<h2>
+➕ Tambah Produk
+</h2>
 
-<div id="dbStatus"
+
+<div
+id="dbStatus"
 class="status">
-Terhubung ke Supabase...
+
+Menghubungkan ke Supabase...
+
 </div>
 
 
@@ -792,14 +816,15 @@ onclick="tambahProduk()">
 
 <div class="admin-card">
 
-<h2>📦 Produk Online</h2>
+<h2>
+📦 Produk Online
+</h2>
 
 <div id="adminProducts">
 Memuat produk...
 </div>
 
 </div>
-
 
 </div>
 
@@ -809,7 +834,7 @@ Memuat produk...
 <script>
 
 /* =====================================
-   SUPABASE SUDAH DIPASANG
+   SUPABASE
 ===================================== */
 
 const SUPABASE_URL =
@@ -829,13 +854,13 @@ SUPABASE_KEY
    DATA
 ===================================== */
 
-let produk=[];
+let produk = [];
 
-let tab="Semua";
+let tab = "Semua";
 
 
 /* =====================================
-   ESCAPE
+   AMANKAN TEXT
 ===================================== */
 
 function esc(value){
@@ -851,19 +876,22 @@ return String(value ?? "")
 
 
 /* =====================================
-   LOAD PRODUK
+   AMBIL PRODUK DARI SUPABASE
 ===================================== */
 
 async function loadProduk(){
 
-const status=
+const status =
 document.getElementById("dbStatus");
 
-const {data,error}=
+
+const {data,error} =
 await supabaseClient
 .from("produk")
 .select("*")
-.order("created_at",{ascending:false});
+.order("created_at",{
+ascending:false
+});
 
 
 if(error){
@@ -872,13 +900,14 @@ console.error(error);
 
 if(status){
 
-status.innerText=
-"❌ Gagal terhubung ke database: "+
+status.innerText =
+"❌ Database error: "+
 error.message;
 
 }
 
-document.getElementById("products").innerHTML=
+document.getElementById("products")
+.innerHTML =
 `<p style="color:#f66">
 Gagal mengambil produk.
 </p>`;
@@ -888,16 +917,18 @@ return;
 }
 
 
-produk=data||[];
+produk = data || [];
+
 
 if(status){
 
-status.innerText=
+status.innerText =
 "✅ Database online • "+
 produk.length+
 " produk";
 
 }
+
 
 renderProduk();
 
@@ -907,45 +938,50 @@ renderAdmin();
 
 
 /* =====================================
-   RENDER PRODUK
+   TAMPILKAN PRODUK
 ===================================== */
 
 function renderProduk(){
 
-let search=
+const search =
 document.getElementById("search");
 
-let q=
-(search?.value||"")
+
+const q =
+(search?.value || "")
 .toLowerCase();
 
 
-let hasil=produk.filter(p=>{
+const hasil =
+produk.filter(p=>{
 
-let cocokTab=
-tab==="Semua"||
-p.game===tab||
+const cocokTab =
+tab==="Semua" ||
+p.game===tab ||
 p.kategori===tab;
 
-let cocokSearch=
+
+const cocokSearch =
 (`${p.nama} ${p.game}`)
 .toLowerCase()
 .includes(q);
 
-return cocokTab&&cocokSearch;
+
+return cocokTab && cocokSearch;
 
 });
 
 
 document.getElementById("jumlah")
-.innerText=
+.innerText =
 hasil.length+
 " produk";
 
 
 if(!hasil.length){
 
-document.getElementById("products").innerHTML=
+document.getElementById("products")
+.innerHTML =
 `<p style="color:#888">
 Belum ada produk.
 </p>`;
@@ -955,7 +991,8 @@ return;
 }
 
 
-document.getElementById("products").innerHTML=
+document.getElementById("products")
+.innerHTML =
 
 hasil.map(p=>`
 
@@ -965,12 +1002,16 @@ hasil.map(p=>`
 
 ${
 p.foto
+
 ?
+
 `<img
 src="${esc(p.foto)}"
 alt="${esc(p.nama)}">`
+
 :
-esc(p.icon||"🎮")
+
+esc(p.icon || "🎮")
 }
 
 </div>
@@ -981,12 +1022,14 @@ esc(p.icon||"🎮")
 <small>
 ${esc(p.game)}
 •
-${esc(p.kategori||"Produk")}
+${esc(p.kategori || "Produk")}
 </small>
+
 
 <h3>
 ${esc(p.nama)}
 </h3>
+
 
 <div class="price">
 ${esc(p.harga)}
@@ -995,7 +1038,7 @@ ${esc(p.harga)}
 
 <button
 class="buy"
-onclick="beli('${esc(p.nama)}','${esc(p.harga)}')">
+onclick="beliProduk('${esc(p.nama)}','${esc(p.harga)}')">
 
 Beli
 
@@ -1011,12 +1054,13 @@ Beli
 
 
 /* =====================================
-   TAB
+   FILTER
 ===================================== */
 
 function setTab(nama,button){
 
-tab=nama;
+tab = nama;
+
 
 document
 .querySelectorAll(".tabs button")
@@ -1024,7 +1068,9 @@ document
 x.classList.remove("active")
 );
 
+
 button.classList.add("active");
+
 
 renderProduk();
 
@@ -1033,7 +1079,8 @@ renderProduk();
 
 function filterGame(nama){
 
-tab=nama;
+tab = nama;
+
 
 document
 .getElementById("produk")
@@ -1041,13 +1088,14 @@ document
 behavior:"smooth"
 });
 
+
 renderProduk();
 
 }
 
 
 /* =====================================
-   LOGIN
+   LOGIN DEV
 ===================================== */
 
 function openLogin(){
@@ -1068,18 +1116,18 @@ document.getElementById("login")
 
 function login(){
 
-const username=
+const username =
 document.getElementById("username")
 .value;
 
-const password=
+const password =
 document.getElementById("password")
 .value;
 
 
 if(
-username==="admin" &&
-password==="APAN123"
+username === "admin" &&
+password === "APAN123"
 ){
 
 closeLogin();
@@ -1092,7 +1140,7 @@ renderAdmin();
 }else{
 
 document.getElementById("loginError")
-.innerText=
+.innerText =
 "Username atau password salah.";
 
 }
@@ -1114,22 +1162,27 @@ document.getElementById("admin")
 
 function previewFoto(event){
 
-const file=
+const file =
 event.target.files[0];
+
 
 if(!file)return;
 
 
 if(!file.type.startsWith("image/")){
 
-alert("File harus berupa foto.");
+alert(
+"File harus berupa foto."
+);
+
+event.target.value="";
 
 return;
 
 }
 
 
-if(file.size>5*1024*1024){
+if(file.size > 5*1024*1024){
 
 alert(
 "Ukuran foto maksimal 5 MB."
@@ -1142,18 +1195,23 @@ return;
 }
 
 
-const reader=
+const reader =
 new FileReader();
 
 
-reader.onload=function(e){
+reader.onload =
+function(e){
 
-const preview=
+const preview =
 document.getElementById("fotoPreview");
 
-preview.src=e.target.result;
 
-preview.style.display="block";
+preview.src =
+e.target.result;
+
+
+preview.style.display =
+"block";
 
 };
 
@@ -1165,6 +1223,7 @@ reader.readAsDataURL(file);
 
 /* =====================================
    UPLOAD FOTO
+   BUCKET = product
 ===================================== */
 
 async function uploadFoto(file){
@@ -1172,14 +1231,14 @@ async function uploadFoto(file){
 if(!file)return null;
 
 
-const extension=
+const extension =
 file.name
 .split(".")
 .pop()
 .toLowerCase();
 
 
-const fileName=
+const fileName =
 Date.now()+
 "-"+
 Math.random()
@@ -1189,15 +1248,14 @@ Math.random()
 extension;
 
 
-const path=
-"produk/"+
-fileName;
+const path =
+"produk/"+fileName;
 
 
-const {error}=
+const {error} =
 await supabaseClient
 .storage
-.from("produk")
+.from("product")
 .upload(
 path,
 file,
@@ -1218,10 +1276,10 @@ error.message
 }
 
 
-const {data}=
+const {data} =
 supabaseClient
 .storage
-.from("produk")
+.from("product")
 .getPublicUrl(path);
 
 
@@ -1236,33 +1294,38 @@ return data.publicUrl;
 
 async function tambahProduk(){
 
-const nama=
+const nama =
 document.getElementById("pNama")
 .value.trim();
 
-const game=
+
+const game =
 document.getElementById("pGame")
 .value;
 
-const harga=
+
+const harga =
 document.getElementById("pHarga")
 .value.trim();
 
-const kategori=
+
+const kategori =
 document.getElementById("pKategori")
 .value;
 
-const icon=
+
+const icon =
 document.getElementById("pIcon")
-.value.trim()||
+.value.trim() ||
 "🎮";
 
-const file=
+
+const file =
 document.getElementById("pFoto")
 .files[0];
 
 
-if(!nama||!harga){
+if(!nama || !harga){
 
 alert(
 "Nama produk dan harga wajib diisi."
@@ -1273,29 +1336,30 @@ return;
 }
 
 
-const tombol=
+const tombol =
 document.getElementById("tambahBtn");
+
 
 tombol.disabled=true;
 
-tombol.innerText=
+tombol.innerText =
 "Menyimpan...";
 
 
 try{
 
-let fotoUrl=null;
+let fotoUrl = null;
 
 
 if(file){
 
-fotoUrl=
+fotoUrl =
 await uploadFoto(file);
 
 }
 
 
-const {error}=
+const {error} =
 await supabaseClient
 .from("produk")
 .insert({
@@ -1336,12 +1400,13 @@ document.getElementById("pIcon")
 document.getElementById("pFoto")
 .value="";
 
+
 document.getElementById("fotoPreview")
 .style.display="none";
 
 
 alert(
-"✅ Produk berhasil disimpan online!"
+"✅ Produk berhasil disimpan!"
 );
 
 
@@ -1352,10 +1417,10 @@ await loadProduk();
 
 console.error(error);
 
+
 alert(
 "❌ Gagal menyimpan produk:\n\n"+
-error.message+
-"\n\nPastikan policy INSERT tabel produk sudah dibuat."
+error.message
 );
 
 }
@@ -1363,27 +1428,28 @@ error.message+
 
 tombol.disabled=false;
 
-tombol.innerText=
+tombol.innerText =
 "+ Tambahkan Produk";
 
 }
 
 
 /* =====================================
-   ADMIN LIST
+   DAFTAR PRODUK DI DEV
 ===================================== */
 
 function renderAdmin(){
 
-const box=
+const box =
 document.getElementById("adminProducts");
+
 
 if(!box)return;
 
 
 if(!produk.length){
 
-box.innerHTML=
+box.innerHTML =
 `<p style="color:#888">
 Belum ada produk.
 </p>`;
@@ -1393,19 +1459,25 @@ return;
 }
 
 
-box.innerHTML=
+box.innerHTML =
+
 produk.map(p=>`
 
 <div class="admin-item">
+
 
 <div class="admin-thumb">
 
 ${
 p.foto
+
 ?
+
 `<img src="${esc(p.foto)}">`
+
 :
-esc(p.icon||"🎮")
+
+esc(p.icon || "🎮")
 }
 
 </div>
@@ -1436,6 +1508,7 @@ Hapus
 
 </button>
 
+
 </div>
 
 `).join("");
@@ -1444,16 +1517,21 @@ Hapus
 
 
 /* =====================================
-   HAPUS
+   HAPUS PRODUK
 ===================================== */
 
 async function hapusProduk(id){
 
-if(!confirm("Hapus produk ini?"))
+if(!confirm(
+"Yakin ingin menghapus produk ini?"
+)){
+
 return;
 
+}
 
-const {error}=
+
+const {error} =
 await supabaseClient
 .from("produk")
 .delete()
@@ -1464,8 +1542,7 @@ if(error){
 
 alert(
 "Gagal menghapus:\n"+
-error.message+
-"\n\nPastikan policy DELETE sudah dibuat."
+error.message
 );
 
 return;
@@ -1479,15 +1556,14 @@ await loadProduk();
 
 
 /* =====================================
-   START
+   JALANKAN
 ===================================== */
 
 loadProduk();
 
 
 /* =====================================
-   UPDATE OTOMATIS
-   Setiap 15 detik
+   CEK DATA BARU OTOMATIS
 ===================================== */
 
 setInterval(
