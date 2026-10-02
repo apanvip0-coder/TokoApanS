@@ -2,310 +2,201 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Toko APAN - Top Up Game</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toko APAN</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-  background:#08090c;
-  color:white;
+font-family:Arial,sans-serif;
+background:#08090c;
+color:#fff;
 }
-
 header{
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:rgba(8,9,12,.88);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid #24252b;
+position:sticky;top:0;z-index:20;
+background:#08090ccc;
+backdrop-filter:blur(18px);
+border-bottom:1px solid #24252d;
 }
-
 .nav{
-  max-width:1100px;
-  margin:auto;
-  height:65px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 20px;
+max-width:1100px;margin:auto;height:68px;
+padding:0 20px;display:flex;
+align-items:center;justify-content:space-between;
 }
-
-.logo{
-  font-size:23px;
-  font-weight:900;
+.logo{font-size:23px;font-weight:900}
+.logo span{color:#9c8cff}
+.nav a{
+color:#aaa;text-decoration:none;margin-left:18px;
+font-size:14px;
 }
-
-.logo span{
-  color:#9b8cff;
-}
-
-nav a{
-  color:#aaa;
-  text-decoration:none;
-  margin-left:20px;
-  font-size:14px;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:25px 20px;
-}
-
-/* HERO */
+.container{max-width:1100px;margin:auto;padding:25px 20px}
 
 .hero{
-  margin-top:20px;
-  padding:45px 30px;
-  border:1px solid #292b34;
-  border-radius:25px;
-  background:
-    radial-gradient(circle at 80% 20%,#5146a855,transparent 35%),
-    linear-gradient(135deg,#14151c,#0c0d11);
+margin-top:15px;padding:45px 30px;
+border:1px solid #292c36;border-radius:25px;
+background:
+radial-gradient(circle at 80% 10%,#6658ff40,transparent 35%),
+linear-gradient(135deg,#15161d,#0b0c10);
 }
-
-.hero small{
-  color:#9d91ff;
-  font-weight:bold;
-}
-
+.hero small{color:#a99cff;font-weight:bold}
 .hero h1{
-  font-size:clamp(35px,7vw,65px);
-  margin:12px 0;
+font-size:clamp(38px,7vw,65px);
+line-height:1;margin:14px 0;
 }
-
-.hero p{
-  color:#999;
-  max-width:600px;
-  line-height:1.6;
-}
-
-.search{
-  display:flex;
-  margin-top:25px;
-  max-width:650px;
-}
-
+.hero p{color:#999;line-height:1.6;max-width:600px}
+.search{display:flex;margin-top:25px;max-width:650px}
 .search input{
-  flex:1;
-  background:#08090c;
-  border:1px solid #30323b;
-  color:white;
-  padding:15px;
-  border-radius:12px 0 0 12px;
-  outline:none;
+flex:1;padding:14px;background:#08090c;
+border:1px solid #30333c;color:white;
+border-radius:12px 0 0 12px;outline:none;
 }
-
 .search button{
-  border:0;
-  padding:0 22px;
-  font-weight:bold;
-  border-radius:0 12px 12px 0;
+padding:0 22px;border:0;font-weight:bold;
+border-radius:0 12px 12px 0;
 }
 
-/* GAME */
-
-.section{
-  margin-top:45px;
-}
-
+.section{margin-top:45px}
 .title{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:18px;
+display:flex;justify-content:space-between;
+align-items:center;margin-bottom:18px;
 }
-
-.title h2{
-  font-size:23px;
-}
-
-.title span{
-  color:#777;
-  font-size:13px;
-}
+.title span{color:#777;font-size:13px}
 
 .games{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:13px;
+display:grid;grid-template-columns:repeat(4,1fr);gap:13px;
 }
-
 .game{
-  padding:17px;
-  border:1px solid #292b34;
-  border-radius:17px;
-  background:#111218;
-  cursor:pointer;
-  transition:.2s;
+background:#111218;border:1px solid #292c36;
+border-radius:17px;padding:17px;cursor:pointer;
+transition:.2s;
 }
-
-.game:hover{
-  transform:translateY(-3px);
-  border-color:#7568ff;
-}
-
+.game:hover{transform:translateY(-3px);border-color:#766aff}
 .icon{
-  width:50px;
-  height:50px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#282b36,#55596a);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-  margin-bottom:12px;
+width:50px;height:50px;border-radius:14px;
+display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,#282b36,#565b6c);
+font-weight:bold;margin-bottom:12px;
 }
-
-.game p{
-  color:#777;
-  font-size:12px;
-  margin-top:5px;
-}
-
-/* TAB */
+.game p{font-size:12px;color:#777;margin-top:5px}
 
 .tabs{
-  display:flex;
-  gap:9px;
-  overflow:auto;
-  margin-bottom:20px;
+display:flex;gap:9px;overflow:auto;margin-bottom:20px;
 }
-
 .tabs button{
-  white-space:nowrap;
-  padding:10px 16px;
-  border-radius:50px;
-  border:1px solid #292b34;
-  background:#111218;
-  color:#aaa;
-  cursor:pointer;
+white-space:nowrap;padding:10px 16px;
+border-radius:50px;border:1px solid #292c36;
+background:#111218;color:#aaa;cursor:pointer;
 }
-
-.tabs button.active,
-.tabs button:hover{
-  background:white;
-  color:black;
+.tabs button.active,.tabs button:hover{
+background:#fff;color:#000;
 }
-
-/* PRODUCT */
 
 .products{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
 }
-
 .product{
-  background:#111218;
-  border:1px solid #292b34;
-  border-radius:18px;
-  overflow:hidden;
+background:#111218;border:1px solid #292c36;
+border-radius:18px;overflow:hidden;
 }
-
 .product-img{
-  height:150px;
-  background:
-    radial-gradient(circle at 70% 20%,#7063ff55,transparent 40%),
-    linear-gradient(135deg,#181a22,#30333e);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:40px;
+height:145px;
+display:flex;align-items:center;justify-content:center;
+font-size:40px;
+background:
+radial-gradient(circle at 70% 20%,#7163ff40,transparent 40%),
+linear-gradient(135deg,#181a22,#303440);
 }
-
-.product-info{
-  padding:16px;
-}
-
-.product-info small{
-  color:#777;
-}
-
-.product-info h3{
-  margin:7px 0;
-}
-
-.price{
-  font-size:19px;
-  font-weight:bold;
-  margin:12px 0;
-}
-
+.info{padding:16px}
+.info small{color:#777}
+.info h3{margin:7px 0}
+.price{font-size:19px;font-weight:bold;margin:12px 0}
 .buy{
-  width:100%;
-  padding:12px;
-  border:0;
-  border-radius:11px;
-  background:white;
-  color:black;
-  font-weight:bold;
-  cursor:pointer;
+width:100%;padding:12px;border:0;border-radius:11px;
+background:#fff;color:#000;font-weight:bold;cursor:pointer;
 }
 
-.buy:hover{
-  background:#ddd;
+#admin{
+display:none;
+position:fixed;inset:0;z-index:100;
+background:#08090c;
+overflow:auto;
 }
+.admin-head{
+position:sticky;top:0;z-index:5;
+background:#101117;border-bottom:1px solid #292c36;
+padding:18px;
+display:flex;justify-content:space-between;
+align-items:center;
+}
+.admin-box{
+max-width:900px;margin:auto;padding:25px 20px;
+}
+.admin-card{
+background:#111218;border:1px solid #292c36;
+border-radius:18px;padding:20px;margin-bottom:18px;
+}
+.admin-card h2{margin-bottom:15px}
+input,select{
+width:100%;padding:12px;margin:6px 0 12px;
+background:#08090c;border:1px solid #30333c;
+color:white;border-radius:10px;
+}
+.admin-btn{
+padding:11px 15px;border:0;border-radius:10px;
+font-weight:bold;cursor:pointer;
+}
+.primary{background:#fff;color:#000}
+.danger{background:#d33;color:#fff}
+.close{background:#292c36;color:#fff}
 
-/* FOOTER */
+.login{
+position:fixed;inset:0;z-index:200;
+display:none;align-items:center;justify-content:center;
+background:#050609ee;
+}
+.login-box{
+width:min(380px,90%);
+padding:25px;background:#111218;
+border:1px solid #30333c;border-radius:20px;
+}
+.login-box h2{margin-bottom:18px}
+
+.admin-products{
+display:grid;gap:10px;
+}
+.admin-item{
+display:flex;align-items:center;
+justify-content:space-between;gap:10px;
+padding:13px;background:#0b0c10;
+border:1px solid #282b34;border-radius:12px;
+}
+.admin-item small{color:#888}
+
+.owner{
+position:fixed;right:18px;bottom:18px;
+z-index:50;
+padding:11px 15px;border-radius:50px;
+background:#fff;color:#000;
+font-weight:bold;border:0;cursor:pointer;
+}
 
 footer{
-  margin-top:60px;
-  padding:30px 20px;
-  text-align:center;
-  border-top:1px solid #222;
-  color:#666;
-  font-size:13px;
+margin-top:60px;padding:30px;text-align:center;
+border-top:1px solid #222;color:#666;font-size:13px;
 }
-
-/* MOBILE */
 
 @media(max-width:750px){
-
-  nav{
-    display:none;
-  }
-
-  .games{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-
+.nav nav{display:none}
+.games{grid-template-columns:repeat(2,1fr)}
+.products{grid-template-columns:repeat(2,1fr)}
 }
-
 @media(max-width:500px){
-
-  .hero{
-    padding:30px 20px;
-  }
-
-  .search{
-    flex-direction:column;
-  }
-
-  .search input{
-    border-radius:11px;
-  }
-
-  .search button{
-    margin-top:8px;
-    border-radius:11px;
-    padding:13px;
-  }
-
-  .products{
-    grid-template-columns:1fr;
-  }
-
+.hero{padding:30px 20px}
+.search{flex-direction:column}
+.search input{border-radius:11px}
+.search button{margin-top:8px;padding:13px;border-radius:11px}
+.products{grid-template-columns:1fr}
+.admin-item{align-items:flex-start;flex-direction:column}
 }
 </style>
 </head>
@@ -313,58 +204,32 @@ footer{
 <body>
 
 <header>
-
 <div class="nav">
-
-<div class="logo">
-TOKO <span>APAN</span>
-</div>
-
+<div class="logo">TOKO <span>APAN</span></div>
 <nav>
 <a href="#home">Home</a>
 <a href="#game">Game</a>
 <a href="#produk">Produk</a>
-<a href="#bantuan">Bantuan</a>
 </nav>
-
 </div>
-
 </header>
-
 
 <main id="home">
 
 <div class="container">
 
 <section class="hero">
-
 <small>⚡ TOKO TOP UP APAN</small>
-
-<h1>
-Top Up Game<br>
-Lebih Mudah.
-</h1>
-
+<h1>Top Up Game<br>Lebih Mudah.</h1>
 <p>
 Pilih game favoritmu, cari produk yang kamu inginkan,
-kemudian tekan tombol Beli untuk melanjutkan pesanan.
+kemudian tekan Beli untuk melanjutkan pesanan.
 </p>
 
 <div class="search">
-
-<input
-id="search"
-type="text"
-placeholder="Cari game atau produk..."
-onkeyup="cariProduk()"
->
-
-<button onclick="cariProduk()">
-Cari
-</button>
-
+<input id="search" placeholder="Cari game atau produk..." oninput="render()">
+<button onclick="render()">Cari</button>
 </div>
-
 </section>
 
 
@@ -402,7 +267,6 @@ Cari
 </div>
 
 </div>
-
 </section>
 
 
@@ -414,94 +278,142 @@ Cari
 </div>
 
 <div class="tabs">
-
-<button class="active" onclick="ubahTab('Semua',this)">
-Semua
-</button>
-
-<button onclick="ubahTab('Terpopuler',this)">
-🔥 Terpopuler
-</button>
-
-<button onclick="ubahTab('Terbaru',this)">
-✨ Terbaru
-</button>
-
-<button onclick="ubahTab('Mobile Legends',this)">
-Mobile Legends
-</button>
-
-<button onclick="ubahTab('Free Fire',this)">
-Free Fire
-</button>
-
-<button onclick="ubahTab('PUBG Mobile',this)">
-PUBG
-</button>
-
-<button onclick="ubahTab('Valorant',this)">
-Valorant
-</button>
-
+<button class="active" onclick="setTab('Semua',this)">Semua</button>
+<button onclick="setTab('Terpopuler',this)">🔥 Terpopuler</button>
+<button onclick="setTab('Terbaru',this)">✨ Terbaru</button>
+<button onclick="setTab('Mobile Legends',this)">Mobile Legends</button>
+<button onclick="setTab('Free Fire',this)">Free Fire</button>
+<button onclick="setTab('PUBG Mobile',this)">PUBG</button>
+<button onclick="setTab('Valorant',this)">Valorant</button>
 </div>
-
 
 <div class="products" id="products"></div>
 
 </section>
 
-
-<section class="section" id="bantuan">
-
-<div class="title">
-<h2>Kenapa Toko APAN?</h2>
 </div>
-
-<div class="games">
-
-<div class="game">
-<div class="icon">⚡</div>
-<b>Cepat</b>
-<p>Proses pemesanan dibuat sederhana.</p>
-</div>
-
-<div class="game">
-<div class="icon">🛡️</div>
-<b>Aman</b>
-<p>Informasi produk ditampilkan jelas.</p>
-</div>
-
-<div class="game">
-<div class="icon">💬</div>
-<b>Support</b>
-<p>Pesanan dapat diarahkan ke WhatsApp.</p>
-</div>
-
-<div class="game">
-<div class="icon">📱</div>
-<b>Responsive</b>
-<p>Nyaman digunakan melalui HP.</p>
-</div>
-
-</div>
-
-</section>
-
-</div>
-
 </main>
 
 
 <footer>
-
 © 2026 Toko APAN — Game Top Up
-
 </footer>
+
+
+<!-- TOMBOL PEMILIK -->
+<button class="owner" onclick="openLogin()">⚙ DEV / PEMILIK</button>
+
+
+<!-- LOGIN -->
+<div class="login" id="login">
+
+<div class="login-box">
+
+<h2>Login Pemilik</h2>
+
+<input id="username" placeholder="Username">
+
+<input id="password" type="password" placeholder="Password">
+
+<button class="admin-btn primary" onclick="login()">
+Masuk
+</button>
+
+<button class="admin-btn close" onclick="closeLogin()">
+Batal
+</button>
+
+<p id="loginError" style="color:#f55;margin-top:12px"></p>
+
+</div>
+</div>
+
+
+<!-- PANEL ADMIN -->
+<div id="admin">
+
+<div class="admin-head">
+<b>⚙ PANEL DEV / PEMILIK</b>
+
+<button class="admin-btn close" onclick="closeAdmin()">
+Tutup
+</button>
+</div>
+
+
+<div class="admin-box">
+
+
+<div class="admin-card">
+
+<h2>Tambah Produk</h2>
+
+<input id="pNama" placeholder="Nama produk">
+
+<select id="pGame">
+<option>Mobile Legends</option>
+<option>Free Fire</option>
+<option>PUBG Mobile</option>
+<option>Valorant</option>
+</select>
+
+<input id="pHarga" placeholder="Harga contoh: Rp 20.000">
+
+<select id="pKategori">
+<option>Terpopuler</option>
+<option>Terbaru</option>
+</select>
+
+<input id="pIcon" placeholder="Emoji / ikon contoh: 💎">
+
+<button class="admin-btn primary" onclick="tambahProduk()">
++ Tambah Produk
+</button>
+
+</div>
+
+
+<div class="admin-card">
+
+<h2>Produk Saat Ini</h2>
+
+<div class="admin-products" id="adminProducts"></div>
+
+</div>
+
+
+<div class="admin-card">
+
+<h2>Pengaturan Toko</h2>
+
+<input id="namaToko" placeholder="Nama toko">
+
+<input id="wa" placeholder="Nomor WhatsApp">
+
+<button class="admin-btn primary" onclick="simpanPengaturan()">
+Simpan Pengaturan
+</button>
+
+</div>
+
+
+<div class="admin-card">
+
+<h2>Data Website</h2>
+
+<button class="admin-btn danger" onclick="resetData()">
+Reset Produk Demo
+</button>
+
+</div>
+
+</div>
+</div>
 
 
 <script>
 
-const produk = [
+const defaultProduk=[
 
 {
 nama:"86 Diamonds",
@@ -577,12 +489,25 @@ icon:"⚡"
 
 ];
 
+
+let produk=
+JSON.parse(localStorage.getItem("apanProduk"))
+||defaultProduk;
+
 let tab="Semua";
 
 
-function tampilkan(){
+function save(){
+localStorage.setItem(
+"apanProduk",
+JSON.stringify(produk)
+);
+}
 
-let kata=document
+
+function render(){
+
+let q=document
 .getElementById("search")
 .value
 .toLowerCase();
@@ -597,7 +522,7 @@ p.kategori===tab;
 let cocokSearch=
 (p.nama+" "+p.game)
 .toLowerCase()
-.includes(kata);
+.includes(q);
 
 return cocokTab && cocokSearch;
 
@@ -617,15 +542,13 @@ document.getElementById("products")
 ${p.icon}
 </div>
 
-<div class="product-info">
+<div class="info">
 
 <small>
 ${p.game} • ${p.kategori}
 </small>
 
-<h3>
-${p.nama}
-</h3>
+<h3>${p.nama}</h3>
 
 <div class="price">
 ${p.harga}
@@ -633,8 +556,7 @@ ${p.harga}
 
 <button
 class="buy"
-onclick="beli('${p.nama}','${p.harga}')"
->
+onclick="beli('${p.nama}','${p.harga}')">
 Beli
 </button>
 
@@ -647,17 +569,17 @@ Beli
 }
 
 
-function ubahTab(nama,tombol){
+function setTab(nama,button){
 
 tab=nama;
 
 document
 .querySelectorAll(".tabs button")
-.forEach(b=>b.classList.remove("active"));
+.forEach(x=>x.classList.remove("active"));
 
-tombol.classList.add("active");
+button.classList.add("active");
 
-tampilkan();
+render();
 
 }
 
@@ -667,52 +589,192 @@ function filterGame(nama){
 tab=nama;
 
 document
-.querySelectorAll(".tabs button")
-.forEach(b=>{
-
-b.classList.toggle(
-"active",
-b.innerText.includes(nama)
-);
-
-});
-
-document
 .getElementById("produk")
-.scrollIntoView({
-behavior:"smooth"
-});
+.scrollIntoView({behavior:"smooth"});
 
-tampilkan();
-
-}
-
-
-function cariProduk(){
-
-tampilkan();
+render();
 
 }
 
 
 function beli(nama,harga){
 
+let nomor=
+localStorage.getItem("apanWA")||"";
+
+if(!nomor){
+alert("Nomor WhatsApp toko belum diatur di Panel Pemilik.");
+return;
+}
+
 let pesan=
-"Hallo Toko APAN, saya ingin membeli "+
-nama+
-" dengan harga "+
-harga;
+`Halo Toko APAN, saya ingin membeli ${nama} dengan harga ${harga}.`;
 
-let url=
-"https://wa.me/?text="+
-encodeURIComponent(pesan);
-
-window.open(url,"_blank");
+window.open(
+"https://wa.me/"+nomor+
+"?text="+encodeURIComponent(pesan),
+"_blank"
+);
 
 }
 
 
-tampilkan();
+/* LOGIN */
+
+function openLogin(){
+document.getElementById("login").style.display="flex";
+}
+
+function closeLogin(){
+document.getElementById("login").style.display="none";
+}
+
+function login(){
+
+let u=document.getElementById("username").value;
+let p=document.getElementById("password").value;
+
+if(u==="admin" && p==="APAN123"){
+
+closeLogin();
+
+document.getElementById("admin").style.display="block";
+
+renderAdmin();
+
+}else{
+
+document.getElementById("loginError")
+.innerText="Username atau password salah.";
+
+}
+
+}
+
+
+function closeAdmin(){
+document.getElementById("admin").style.display="none";
+}
+
+
+/* ADMIN */
+
+function tambahProduk(){
+
+let nama=document.getElementById("pNama").value;
+let game=document.getElementById("pGame").value;
+let harga=document.getElementById("pHarga").value;
+let kategori=document.getElementById("pKategori").value;
+let icon=document.getElementById("pIcon").value||"🎮";
+
+if(!nama || !harga){
+
+alert("Nama dan harga harus diisi.");
+
+return;
+
+}
+
+produk.push({
+nama,
+game,
+harga,
+kategori,
+icon
+});
+
+save();
+render();
+renderAdmin();
+
+document.getElementById("pNama").value="";
+document.getElementById("pHarga").value="";
+document.getElementById("pIcon").value="";
+
+}
+
+
+function renderAdmin(){
+
+document.getElementById("adminProducts")
+.innerHTML=produk.map((p,i)=>`
+
+<div class="admin-item">
+
+<div>
+<b>${p.icon} ${p.nama}</b>
+<br>
+<small>
+${p.game} • ${p.harga}
+</small>
+</div>
+
+<button
+class="admin-btn danger"
+onclick="hapusProduk(${i})">
+Hapus
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+function hapusProduk(index){
+
+if(confirm("Hapus produk ini?")){
+
+produk.splice(index,1);
+
+save();
+render();
+renderAdmin();
+
+}
+
+}
+
+
+function simpanPengaturan(){
+
+let nama=
+document.getElementById("namaToko").value;
+
+let wa=
+document.getElementById("wa").value;
+
+if(nama)
+localStorage.setItem("apanNama",nama);
+
+if(wa)
+localStorage.setItem(
+"apanWA",
+wa.replace(/\D/g,"")
+);
+
+alert("Pengaturan tersimpan di perangkat ini.");
+
+}
+
+
+function resetData(){
+
+if(confirm("Reset semua produk ke produk demo?")){
+
+produk=[...defaultProduk];
+
+save();
+render();
+renderAdmin();
+
+}
+
+}
+
+
+render();
 
 </script>
 
