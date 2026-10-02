@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,196 +8,126 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-font-family:Arial,sans-serif;
-background:#08090c;
-color:#fff;
-}
-header{
-position:sticky;top:0;z-index:20;
-background:#08090ccc;
-backdrop-filter:blur(18px);
-border-bottom:1px solid #24252d;
-}
-.nav{
-max-width:1100px;margin:auto;height:68px;
-padding:0 20px;display:flex;
-align-items:center;justify-content:space-between;
-}
-.logo{font-size:23px;font-weight:900}
-.logo span{color:#9c8cff}
-.nav a{
-color:#aaa;text-decoration:none;margin-left:18px;
-font-size:14px;
-}
+body{font-family:Arial,sans-serif;background:#08090c;color:#fff}
+header{position:sticky;top:0;z-index:20;background:#08090ccc;backdrop-filter:blur(18px);border-bottom:1px solid #24252d}
+.nav{max-width:1100px;margin:auto;height:68px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:23px;font-weight:900}.logo span{color:#9c8cff}
+.nav a{color:#aaa;text-decoration:none;margin-left:18px;font-size:14px}
 .container{max-width:1100px;margin:auto;padding:25px 20px}
 
-.hero{
-margin-top:15px;padding:45px 30px;
-border:1px solid #292c36;border-radius:25px;
-background:
-radial-gradient(circle at 80% 10%,#6658ff40,transparent 35%),
-linear-gradient(135deg,#15161d,#0b0c10);
-}
+.hero{margin-top:15px;padding:45px 30px;border:1px solid #292c36;border-radius:25px;background:radial-gradient(circle at 80% 10%,#6658ff40,transparent 35%),linear-gradient(135deg,#15161d,#0b0c10)}
 .hero small{color:#a99cff;font-weight:bold}
-.hero h1{
-font-size:clamp(38px,7vw,65px);
-line-height:1;margin:14px 0;
-}
+.hero h1{font-size:clamp(38px,7vw,65px);line-height:1;margin:14px 0}
 .hero p{color:#999;line-height:1.6;max-width:600px}
 .search{display:flex;margin-top:25px;max-width:650px}
-.search input{
-flex:1;padding:14px;background:#08090c;
-border:1px solid #30333c;color:white;
-border-radius:12px 0 0 12px;outline:none;
-}
-.search button{
-padding:0 22px;border:0;font-weight:bold;
-border-radius:0 12px 12px 0;
-}
+.search input{flex:1;padding:14px;background:#08090c;border:1px solid #30333c;color:white;border-radius:12px 0 0 12px;outline:none}
+.search button{padding:0 22px;border:0;font-weight:bold;border-radius:0 12px 12px 0}
 
 .section{margin-top:45px}
-.title{
-display:flex;justify-content:space-between;
-align-items:center;margin-bottom:18px;
-}
+.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
 .title span{color:#777;font-size:13px}
 
-.games{
-display:grid;grid-template-columns:repeat(4,1fr);gap:13px;
-}
-.game{
-background:#111218;border:1px solid #292c36;
-border-radius:17px;padding:17px;cursor:pointer;
-transition:.2s;
-}
+.games{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.game{background:#111218;border:1px solid #292c36;border-radius:17px;padding:17px;cursor:pointer;transition:.2s}
 .game:hover{transform:translateY(-3px);border-color:#766aff}
-.icon{
-width:50px;height:50px;border-radius:14px;
-display:flex;align-items:center;justify-content:center;
-background:linear-gradient(135deg,#282b36,#565b6c);
-font-weight:bold;margin-bottom:12px;
-}
+.icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#282b36,#565b6c);font-weight:bold;margin-bottom:12px;overflow:hidden}
+.icon img{width:100%;height:100%;object-fit:cover}
 .game p{font-size:12px;color:#777;margin-top:5px}
 
-.tabs{
-display:flex;gap:9px;overflow:auto;margin-bottom:20px;
-}
-.tabs button{
-white-space:nowrap;padding:10px 16px;
-border-radius:50px;border:1px solid #292c36;
-background:#111218;color:#aaa;cursor:pointer;
-}
-.tabs button.active,.tabs button:hover{
-background:#fff;color:#000;
-}
+.tabs{display:flex;gap:9px;overflow:auto;margin-bottom:20px}
+.tabs button{white-space:nowrap;padding:10px 16px;border-radius:50px;border:1px solid #292c36;background:#111218;color:#aaa;cursor:pointer}
+.tabs button.active,.tabs button:hover{background:#fff;color:#000}
 
-.products{
-display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
-}
-.product{
-background:#111218;border:1px solid #292c36;
-border-radius:18px;overflow:hidden;
-}
-.product-img{
-height:145px;
-display:flex;align-items:center;justify-content:center;
-font-size:40px;
-background:
-radial-gradient(circle at 70% 20%,#7163ff40,transparent 40%),
-linear-gradient(135deg,#181a22,#303440);
-}
-.info{padding:16px}
-.info small{color:#777}
-.info h3{margin:7px 0}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.product{background:#111218;border:1px solid #292c36;border-radius:18px;overflow:hidden}
+.product-img{height:170px;display:flex;align-items:center;justify-content:center;font-size:42px;background:linear-gradient(135deg,#181a22,#303440);overflow:hidden}
+.product-img img{width:100%;height:100%;object-fit:cover}
+.info{padding:16px}.info small{color:#777}.info h3{margin:7px 0}
 .price{font-size:19px;font-weight:bold;margin:12px 0}
-.buy{
-width:100%;padding:12px;border:0;border-radius:11px;
-background:#fff;color:#000;font-weight:bold;cursor:pointer;
-}
+.buy{width:100%;padding:12px;border:0;border-radius:11px;background:#fff;color:#000;font-weight:bold;cursor:pointer}
 
-#admin{
-display:none;
-position:fixed;inset:0;z-index:100;
-background:#08090c;
-overflow:auto;
-}
-.admin-head{
-position:sticky;top:0;z-index:5;
-background:#101117;border-bottom:1px solid #292c36;
-padding:18px;
-display:flex;justify-content:space-between;
-align-items:center;
-}
-.admin-box{
-max-width:900px;margin:auto;padding:25px 20px;
-}
-.admin-card{
-background:#111218;border:1px solid #292c36;
-border-radius:18px;padding:20px;margin-bottom:18px;
-}
+.owner{position:fixed;right:18px;bottom:18px;z-index:50;padding:11px 15px;border-radius:50px;background:#fff;color:#000;font-weight:bold;border:0;cursor:pointer}
+
+.login{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:#050609ee}
+.login-box{width:min(380px,90%);padding:25px;background:#111218;border:1px solid #30333c;border-radius:20px}
+.login-box h2{margin-bottom:18px}
+
+#admin{display:none;position:fixed;inset:0;z-index:100;background:#08090c;overflow:auto}
+.admin-head{position:sticky;top:0;z-index:5;background:#101117;border-bottom:1px solid #292c36;padding:18px;display:flex;justify-content:space-between;align-items:center}
+.admin-box{max-width:900px;margin:auto;padding:25px 20px}
+.admin-card{background:#111218;border:1px solid #292c36;border-radius:18px;padding:20px;margin-bottom:18px}
 .admin-card h2{margin-bottom:15px}
-input,select{
-width:100%;padding:12px;margin:6px 0 12px;
-background:#08090c;border:1px solid #30333c;
-color:white;border-radius:10px;
-}
-.admin-btn{
-padding:11px 15px;border:0;border-radius:10px;
-font-weight:bold;cursor:pointer;
-}
+
+input,select{width:100%;padding:12px;margin:6px 0 12px;background:#08090c;border:1px solid #30333c;color:white;border-radius:10px}
+
+.admin-btn{padding:11px 15px;border:0;border-radius:10px;font-weight:bold;cursor:pointer;margin:3px}
 .primary{background:#fff;color:#000}
 .danger{background:#d33;color:#fff}
 .close{background:#292c36;color:#fff}
 
-.login{
-position:fixed;inset:0;z-index:200;
-display:none;align-items:center;justify-content:center;
-background:#050609ee;
+.upload{
+border:1px dashed #555b69;
+padding:18px;
+border-radius:14px;
+text-align:center;
+margin-bottom:15px;
+color:#aaa;
 }
-.login-box{
-width:min(380px,90%);
-padding:25px;background:#111218;
-border:1px solid #30333c;border-radius:20px;
-}
-.login-box h2{margin-bottom:18px}
+.upload input{border:0;padding:5px}
 
-.admin-products{
-display:grid;gap:10px;
+.preview{
+width:100%;
+height:180px;
+display:none;
+object-fit:cover;
+border-radius:14px;
+margin-bottom:15px;
+border:1px solid #333;
 }
+
 .admin-item{
-display:flex;align-items:center;
-justify-content:space-between;gap:10px;
-padding:13px;background:#0b0c10;
-border:1px solid #282b34;border-radius:12px;
-}
-.admin-item small{color:#888}
-
-.owner{
-position:fixed;right:18px;bottom:18px;
-z-index:50;
-padding:11px 15px;border-radius:50px;
-background:#fff;color:#000;
-font-weight:bold;border:0;cursor:pointer;
+display:flex;
+align-items:center;
+gap:14px;
+padding:13px;
+background:#0b0c10;
+border:1px solid #282b34;
+border-radius:12px;
+margin-bottom:10px;
 }
 
-footer{
-margin-top:60px;padding:30px;text-align:center;
-border-top:1px solid #222;color:#666;font-size:13px;
+.admin-thumb{
+width:65px;
+height:65px;
+border-radius:10px;
+overflow:hidden;
+background:#252833;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+flex-shrink:0;
 }
+
+.admin-thumb img{width:100%;height:100%;object-fit:cover}
+.admin-info{flex:1}
+.admin-info small{color:#888}
+
+footer{margin-top:60px;padding:30px;text-align:center;border-top:1px solid #222;color:#666;font-size:13px}
 
 @media(max-width:750px){
 .nav nav{display:none}
 .games{grid-template-columns:repeat(2,1fr)}
 .products{grid-template-columns:repeat(2,1fr)}
 }
+
 @media(max-width:500px){
 .hero{padding:30px 20px}
 .search{flex-direction:column}
 .search input{border-radius:11px}
 .search button{margin-top:8px;padding:13px;border-radius:11px}
 .products{grid-template-columns:1fr}
-.admin-item{align-items:flex-start;flex-direction:column}
+.admin-item{align-items:flex-start}
 }
 </style>
 </head>
@@ -215,16 +146,12 @@ border-top:1px solid #222;color:#666;font-size:13px;
 </header>
 
 <main id="home">
-
 <div class="container">
 
 <section class="hero">
 <small>⚡ TOKO TOP UP APAN</small>
 <h1>Top Up Game<br>Lebih Mudah.</h1>
-<p>
-Pilih game favoritmu, cari produk yang kamu inginkan,
-kemudian tekan Beli untuk melanjutkan pesanan.
-</p>
+<p>Pilih game favoritmu, cari produk yang kamu inginkan, kemudian tekan Beli.</p>
 
 <div class="search">
 <input id="search" placeholder="Cari game atau produk..." oninput="render()">
@@ -232,9 +159,7 @@ kemudian tekan Beli untuk melanjutkan pesanan.
 </div>
 </section>
 
-
 <section class="section" id="game">
-
 <div class="title">
 <h2>Game Populer</h2>
 <span>Pilih game</span>
@@ -244,34 +169,28 @@ kemudian tekan Beli untuk melanjutkan pesanan.
 
 <div class="game" onclick="filterGame('Mobile Legends')">
 <div class="icon">ML</div>
-<b>Mobile Legends</b>
-<p>Diamond</p>
+<b>Mobile Legends</b><p>Diamond</p>
 </div>
 
 <div class="game" onclick="filterGame('Free Fire')">
 <div class="icon">FF</div>
-<b>Free Fire</b>
-<p>Diamond</p>
+<b>Free Fire</b><p>Diamond</p>
 </div>
 
 <div class="game" onclick="filterGame('PUBG Mobile')">
 <div class="icon">PUBG</div>
-<b>PUBG Mobile</b>
-<p>UC</p>
+<b>PUBG Mobile</b><p>UC</p>
 </div>
 
 <div class="game" onclick="filterGame('Valorant')">
 <div class="icon">VAL</div>
-<b>Valorant</b>
-<p>Points</p>
+<b>Valorant</b><p>Points</p>
 </div>
 
 </div>
 </section>
 
-
 <section class="section" id="produk">
-
 <div class="title">
 <h2>Produk</h2>
 <span id="jumlah"></span>
@@ -288,65 +207,42 @@ kemudian tekan Beli untuk melanjutkan pesanan.
 </div>
 
 <div class="products" id="products"></div>
-
 </section>
 
 </div>
 </main>
 
+<footer>© 2026 Toko APAN — Game Top Up</footer>
 
-<footer>
-© 2026 Toko APAN — Game Top Up
-</footer>
-
-
-<!-- TOMBOL PEMILIK -->
 <button class="owner" onclick="openLogin()">⚙ DEV / PEMILIK</button>
-
 
 <!-- LOGIN -->
 <div class="login" id="login">
-
 <div class="login-box">
-
 <h2>Login Pemilik</h2>
-
 <input id="username" placeholder="Username">
-
 <input id="password" type="password" placeholder="Password">
 
-<button class="admin-btn primary" onclick="login()">
-Masuk
-</button>
-
-<button class="admin-btn close" onclick="closeLogin()">
-Batal
-</button>
+<button class="admin-btn primary" onclick="login()">Masuk</button>
+<button class="admin-btn close" onclick="closeLogin()">Batal</button>
 
 <p id="loginError" style="color:#f55;margin-top:12px"></p>
-
 </div>
 </div>
 
-
-<!-- PANEL ADMIN -->
+<!-- PANEL DEV -->
 <div id="admin">
 
 <div class="admin-head">
 <b>⚙ PANEL DEV / PEMILIK</b>
-
-<button class="admin-btn close" onclick="closeAdmin()">
-Tutup
-</button>
+<button class="admin-btn close" onclick="closeAdmin()">Tutup</button>
 </div>
-
 
 <div class="admin-box">
 
-
 <div class="admin-card">
 
-<h2>Tambah Produk</h2>
+<h2>➕ Tambah Produk</h2>
 
 <input id="pNama" placeholder="Nama produk">
 
@@ -364,10 +260,19 @@ Tutup
 <option>Terbaru</option>
 </select>
 
-<input id="pIcon" placeholder="Emoji / ikon contoh: 💎">
+<h3 style="margin:10px 0">🖼️ Foto Produk</h3>
+
+<div class="upload">
+Pilih foto dari galeri HP
+<input id="pFoto" type="file" accept="image/*" onchange="previewFoto(event)">
+</div>
+
+<img id="fotoPreview" class="preview">
+
+<input id="pIcon" placeholder="Emoji jika tidak memakai foto, contoh: 💎">
 
 <button class="admin-btn primary" onclick="tambahProduk()">
-+ Tambah Produk
++ Tambahkan Produk
 </button>
 
 </div>
@@ -375,206 +280,156 @@ Tutup
 
 <div class="admin-card">
 
-<h2>Produk Saat Ini</h2>
+<h2>📦 Produk Saat Ini</h2>
 
-<div class="admin-products" id="adminProducts"></div>
+<div id="adminProducts"></div>
 
 </div>
 
 
 <div class="admin-card">
 
-<h2>Pengaturan Toko</h2>
+<h2>⚙ Pengaturan Toko</h2>
 
 <input id="namaToko" placeholder="Nama toko">
 
-<input id="wa" placeholder="Nomor WhatsApp">
+<input id="wa" placeholder="Nomor WhatsApp contoh: 628123456789">
 
 <button class="admin-btn primary" onclick="simpanPengaturan()">
-Simpan Pengaturan
-</button>
-
-</div>
-
-
-<div class="admin-card">
-
-<h2>Data Website</h2>
-
-<button class="admin-btn danger" onclick="resetData()">
-Reset Produk Demo
+Simpan
 </button>
 
 </div>
 
 </div>
 </div>
-
 
 <script>
 
 const defaultProduk=[
-
 {
 nama:"86 Diamonds",
 game:"Mobile Legends",
 harga:"Rp 20.000",
 kategori:"Terpopuler",
-icon:"💎"
+icon:"💎",
+foto:""
 },
-
 {
 nama:"172 Diamonds",
 game:"Mobile Legends",
 harga:"Rp 39.000",
 kategori:"Terbaru",
-icon:"💎"
+icon:"💎",
+foto:""
 },
-
-{
-nama:"257 Diamonds",
-game:"Mobile Legends",
-harga:"Rp 58.000",
-kategori:"Terpopuler",
-icon:"💎"
-},
-
 {
 nama:"100 Diamonds",
 game:"Free Fire",
 harga:"Rp 15.000",
 kategori:"Terbaru",
-icon:"🔥"
+icon:"🔥",
+foto:""
 },
-
 {
 nama:"310 Diamonds",
 game:"Free Fire",
 harga:"Rp 45.000",
 kategori:"Terpopuler",
-icon:"🔥"
+icon:"🔥",
+foto:""
 },
-
-{
-nama:"520 Diamonds",
-game:"Free Fire",
-harga:"Rp 72.000",
-kategori:"Terpopuler",
-icon:"🔥"
-},
-
 {
 nama:"60 UC",
 game:"PUBG Mobile",
 harga:"Rp 16.000",
 kategori:"Terbaru",
-icon:"🎯"
+icon:"🎯",
+foto:""
 },
-
 {
 nama:"325 UC",
 game:"PUBG Mobile",
 harga:"Rp 75.000",
 kategori:"Terpopuler",
-icon:"🎯"
+icon:"🎯",
+foto:""
 },
-
 {
 nama:"475 Points",
 game:"Valorant",
 harga:"Rp 55.000",
 kategori:"Terbaru",
-icon:"⚡"
+icon:"⚡",
+foto:""
 }
-
 ];
 
-
-let produk=
-JSON.parse(localStorage.getItem("apanProduk"))
-||defaultProduk;
-
+let produk=JSON.parse(localStorage.getItem("apanProduk"))||defaultProduk;
 let tab="Semua";
-
+let fotoBaru="";
 
 function save(){
-localStorage.setItem(
-"apanProduk",
-JSON.stringify(produk)
-);
+localStorage.setItem("apanProduk",JSON.stringify(produk));
 }
-
 
 function render(){
 
-let q=document
-.getElementById("search")
-.value
-.toLowerCase();
+let q=document.getElementById("search").value.toLowerCase();
 
 let hasil=produk.filter(p=>{
 
 let cocokTab=
-tab==="Semua" ||
-p.game===tab ||
+tab==="Semua"||
+p.game===tab||
 p.kategori===tab;
 
 let cocokSearch=
-(p.nama+" "+p.game)
-.toLowerCase()
-.includes(q);
+(p.nama+" "+p.game).toLowerCase().includes(q);
 
-return cocokTab && cocokSearch;
+return cocokTab&&cocokSearch;
 
 });
 
+document.getElementById("jumlah").innerText=hasil.length+" produk";
 
-document.getElementById("jumlah")
-.innerText=hasil.length+" produk";
-
-
-document.getElementById("products")
-.innerHTML=hasil.map(p=>`
+document.getElementById("products").innerHTML=hasil.map(p=>`
 
 <div class="product">
 
 <div class="product-img">
-${p.icon}
+${p.foto
+?`<img src="${p.foto}" alt="${p.nama}">`
+:`${p.icon||"🎮"}`
+}
 </div>
 
 <div class="info">
-
-<small>
-${p.game} • ${p.kategori}
-</small>
-
+<small>${p.game} • ${p.kategori}</small>
 <h3>${p.nama}</h3>
+<div class="price">${p.harga}</div>
 
-<div class="price">
-${p.harga}
-</div>
-
-<button
-class="buy"
-onclick="beli('${p.nama}','${p.harga}')">
+<button class="buy"
+onclick="beli('${escapeText(p.nama)}','${escapeText(p.harga)}')">
 Beli
 </button>
 
 </div>
-
 </div>
 
 `).join("");
 
 }
 
+function escapeText(x){
+return String(x).replace(/'/g,"\\'");
+}
 
 function setTab(nama,button){
 
 tab=nama;
 
-document
-.querySelectorAll(".tabs button")
+document.querySelectorAll(".tabs button")
 .forEach(x=>x.classList.remove("active"));
 
 button.classList.add("active");
@@ -583,27 +438,23 @@ render();
 
 }
 
-
 function filterGame(nama){
 
 tab=nama;
 
-document
-.getElementById("produk")
+document.getElementById("produk")
 .scrollIntoView({behavior:"smooth"});
 
 render();
 
 }
 
-
 function beli(nama,harga){
 
-let nomor=
-localStorage.getItem("apanWA")||"";
+let nomor=localStorage.getItem("apanWA");
 
 if(!nomor){
-alert("Nomor WhatsApp toko belum diatur di Panel Pemilik.");
+alert("Nomor WhatsApp belum diatur di Panel Pemilik.");
 return;
 }
 
@@ -634,12 +485,10 @@ function login(){
 let u=document.getElementById("username").value;
 let p=document.getElementById("password").value;
 
-if(u==="admin" && p==="APAN123"){
+if(u==="admin"&&p==="APAN123"){
 
 closeLogin();
-
 document.getElementById("admin").style.display="block";
-
 renderAdmin();
 
 }else{
@@ -651,36 +500,72 @@ document.getElementById("loginError")
 
 }
 
-
 function closeAdmin(){
 document.getElementById("admin").style.display="none";
 }
 
 
-/* ADMIN */
+/* UPLOAD FOTO */
+
+function previewFoto(event){
+
+let file=event.target.files[0];
+
+if(!file)return;
+
+if(!file.type.startsWith("image/")){
+alert("File harus berupa foto.");
+return;
+}
+
+if(file.size>3*1024*1024){
+alert("Ukuran foto maksimal 3 MB.");
+event.target.value="";
+return;
+}
+
+let reader=new FileReader();
+
+reader.onload=function(e){
+
+fotoBaru=e.target.result;
+
+let preview=document.getElementById("fotoPreview");
+
+preview.src=fotoBaru;
+preview.style.display="block";
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+
+/* TAMBAH PRODUK */
 
 function tambahProduk(){
 
-let nama=document.getElementById("pNama").value;
+let nama=document.getElementById("pNama").value.trim();
 let game=document.getElementById("pGame").value;
-let harga=document.getElementById("pHarga").value;
+let harga=document.getElementById("pHarga").value.trim();
 let kategori=document.getElementById("pKategori").value;
-let icon=document.getElementById("pIcon").value||"🎮";
+let icon=document.getElementById("pIcon").value.trim()||"🎮";
 
-if(!nama || !harga){
+if(!nama||!harga){
 
-alert("Nama dan harga harus diisi.");
-
+alert("Nama produk dan harga wajib diisi.");
 return;
 
 }
 
 produk.push({
-nama,
-game,
-harga,
-kategori,
-icon
+nama:nama,
+game:game,
+harga:harga,
+kategori:kategori,
+icon:icon,
+foto:fotoBaru
 });
 
 save();
@@ -690,9 +575,18 @@ renderAdmin();
 document.getElementById("pNama").value="";
 document.getElementById("pHarga").value="";
 document.getElementById("pIcon").value="";
+document.getElementById("pFoto").value="";
+
+fotoBaru="";
+
+document.getElementById("fotoPreview").style.display="none";
+
+alert("Produk berhasil ditambahkan.");
 
 }
 
+
+/* ADMIN PRODUCT */
 
 function renderAdmin(){
 
@@ -701,16 +595,20 @@ document.getElementById("adminProducts")
 
 <div class="admin-item">
 
-<div>
-<b>${p.icon} ${p.nama}</b>
-<br>
-<small>
-${p.game} • ${p.harga}
-</small>
+<div class="admin-thumb">
+${p.foto
+?`<img src="${p.foto}">`
+:`${p.icon||"🎮"}`
+}
 </div>
 
-<button
-class="admin-btn danger"
+<div class="admin-info">
+<b>${p.nama}</b>
+<br>
+<small>${p.game} • ${p.harga}</small>
+</div>
+
+<button class="admin-btn danger"
 onclick="hapusProduk(${i})">
 Hapus
 </button>
@@ -721,13 +619,11 @@ Hapus
 
 }
 
-
-function hapusProduk(index){
+function hapusProduk(i){
 
 if(confirm("Hapus produk ini?")){
 
-produk.splice(index,1);
-
+produk.splice(i,1);
 save();
 render();
 renderAdmin();
@@ -736,43 +632,24 @@ renderAdmin();
 
 }
 
+
+/* PENGATURAN */
 
 function simpanPengaturan(){
 
-let nama=
-document.getElementById("namaToko").value;
+let wa=document.getElementById("wa").value
+.replace(/\D/g,"");
 
-let wa=
-document.getElementById("wa").value;
+if(wa){
+localStorage.setItem("apanWA",wa);
+}
 
-if(nama)
-localStorage.setItem("apanNama",nama);
-
-if(wa)
-localStorage.setItem(
-"apanWA",
-wa.replace(/\D/g,"")
-);
-
-alert("Pengaturan tersimpan di perangkat ini.");
+alert("Pengaturan tersimpan.");
 
 }
 
 
-function resetData(){
-
-if(confirm("Reset semua produk ke produk demo?")){
-
-produk=[...defaultProduk];
-
-save();
-render();
-renderAdmin();
-
-}
-
-}
-
+/* MULAI */
 
 render();
 
@@ -780,3 +657,4 @@ render();
 
 </body>
 </html>
+```
