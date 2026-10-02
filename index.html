@@ -2,480 +2,327 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Toko APAN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APAN TOP UP</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{
-box-sizing:border-box;
-margin:0;
-padding:0
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:#08090c;
-color:#fff;
+  background:#080808;
+  color:white;
+  min-height:100vh;
 }
 
 header{
-position:sticky;
-top:0;
-z-index:20;
-background:#08090ccc;
-backdrop-filter:blur(18px);
-border-bottom:1px solid #24252d;
-}
-
-.nav{
-max-width:1100px;
-height:68px;
-margin:auto;
-padding:0 20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(10,10,10,.85);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #222;
+  padding:15px;
 }
 
 .logo{
-font-size:23px;
-font-weight:900;
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:2px;
 }
 
 .logo span{
-color:#9c8cff;
+  color:#8b5cf6;
 }
 
-.nav a{
-color:#aaa;
-text-decoration:none;
-margin-left:18px;
-font-size:14px;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:25px 20px;
+.search{
+  width:100%;
+  margin-top:14px;
+  padding:13px 16px;
+  border-radius:12px;
+  border:1px solid #333;
+  background:#151515;
+  color:white;
+  outline:none;
 }
 
 .hero{
-margin-top:15px;
-padding:45px 30px;
-border:1px solid #292c36;
-border-radius:25px;
-background:
-radial-gradient(circle at 80% 10%,#6658ff40,transparent 35%),
-linear-gradient(135deg,#15161d,#0b0c10);
-}
-
-.hero small{
-color:#a99cff;
-font-weight:bold;
+  margin:18px;
+  padding:25px;
+  border-radius:20px;
+  background:
+    radial-gradient(circle at top right,#663cff55,transparent 45%),
+    linear-gradient(135deg,#171717,#0b0b0b);
+  border:1px solid #292929;
 }
 
 .hero h1{
-font-size:clamp(38px,7vw,65px);
-line-height:1;
-margin:14px 0;
+  font-size:28px;
+  margin-bottom:8px;
 }
 
 .hero p{
-color:#999;
-line-height:1.6;
-max-width:600px;
-}
-
-.search{
-display:flex;
-margin-top:25px;
-max-width:650px;
-}
-
-.search input{
-flex:1;
-padding:14px;
-background:#08090c;
-border:1px solid #30333c;
-color:white;
-border-radius:12px 0 0 12px;
-outline:none;
-}
-
-.search button{
-padding:0 22px;
-border:0;
-font-weight:bold;
-border-radius:0 12px 12px 0;
-}
-
-.section{
-margin-top:45px;
-}
-
-.title{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:18px;
-}
-
-.title span{
-color:#777;
-font-size:13px;
+  color:#aaa;
+  font-size:14px;
 }
 
 .games{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:13px;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:0 18px 15px;
 }
 
 .game{
-background:#111218;
-border:1px solid #292c36;
-border-radius:17px;
-padding:17px;
-cursor:pointer;
-transition:.2s;
+  min-width:110px;
+  padding:12px;
+  border:1px solid #292929;
+  border-radius:13px;
+  background:#121212;
+  color:white;
+  cursor:pointer;
+  text-align:center;
 }
 
-.game:hover{
-transform:translateY(-3px);
-border-color:#766aff;
-}
-
-.icon{
-width:50px;
-height:50px;
-border-radius:14px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#282b36,#565b6c);
-font-weight:bold;
-margin-bottom:12px;
-}
-
-.game p{
-font-size:12px;
-color:#777;
-margin-top:5px;
+.game.active{
+  border-color:#8b5cf6;
+  background:#21133e;
 }
 
 .tabs{
-display:flex;
-gap:9px;
-overflow:auto;
-margin-bottom:20px;
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:0 18px 18px;
 }
 
-.tabs button{
-white-space:nowrap;
-padding:10px 16px;
-border-radius:50px;
-border:1px solid #292c36;
-background:#111218;
-color:#aaa;
-cursor:pointer;
+.tab{
+  white-space:nowrap;
+  padding:9px 15px;
+  border-radius:20px;
+  border:1px solid #292929;
+  background:#111;
+  color:#aaa;
+  cursor:pointer;
 }
 
-.tabs button.active,
-.tabs button:hover{
-background:#fff;
-color:#000;
+.tab.active{
+  color:white;
+  background:#8b5cf6;
+  border-color:#8b5cf6;
+}
+
+.container{
+  padding:0 18px 40px;
+}
+
+.title{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:14px;
 }
 
 .products{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
 
-.product{
-background:#111218;
-border:1px solid #292c36;
-border-radius:18px;
-overflow:hidden;
+.card{
+  background:#121212;
+  border:1px solid #292929;
+  border-radius:15px;
+  overflow:hidden;
 }
 
-.product-img{
-height:170px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:42px;
-background:linear-gradient(135deg,#181a22,#303440);
-overflow:hidden;
+.card img{
+  width:100%;
+  height:125px;
+  object-fit:cover;
+  background:#1c1c1c;
 }
 
-.product-img img{
-width:100%;
-height:100%;
-object-fit:cover;
+.icon{
+  height:125px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  background:linear-gradient(135deg,#191919,#252525);
 }
 
 .info{
-padding:16px;
+  padding:12px;
 }
 
-.info small{
-color:#777;
+.game-name{
+  color:#888;
+  font-size:11px;
+  margin-bottom:5px;
 }
 
-.info h3{
-margin:7px 0;
+.product-name{
+  font-weight:bold;
+  font-size:15px;
+  min-height:38px;
 }
 
 .price{
-font-size:19px;
-font-weight:bold;
-margin:12px 0;
+  color:#a78bfa;
+  font-weight:bold;
+  margin:8px 0;
 }
 
 .buy{
-width:100%;
-padding:12px;
-border:0;
-border-radius:11px;
-background:#fff;
-color:#000;
-font-weight:bold;
-cursor:pointer;
+  width:100%;
+  border:0;
+  padding:10px;
+  border-radius:9px;
+  background:#8b5cf6;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.owner{
-position:fixed;
-right:18px;
-bottom:18px;
-z-index:50;
-padding:11px 15px;
-border-radius:50px;
-background:#fff;
-color:#000;
-font-weight:bold;
-border:0;
-cursor:pointer;
+.buy:active{
+  transform:scale(.97);
 }
 
-.login{
-position:fixed;
-inset:0;
-z-index:200;
-display:none;
-align-items:center;
-justify-content:center;
-background:#050609ee;
+.empty{
+  grid-column:1/-1;
+  text-align:center;
+  color:#777;
+  padding:40px 10px;
 }
 
-.login-box{
-width:min(380px,90%);
-padding:25px;
-background:#111218;
-border:1px solid #30333c;
-border-radius:20px;
+.dev-button{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  z-index:30;
+  border:0;
+  border-radius:50%;
+  width:52px;
+  height:52px;
+  background:#8b5cf6;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 5px 25px #000;
 }
 
-.login-box h2{
-margin-bottom:18px;
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:50;
+  background:#000b;
+  backdrop-filter:blur(8px);
+  overflow:auto;
+  padding:20px;
 }
 
-#admin{
-display:none;
-position:fixed;
-inset:0;
-z-index:100;
-background:#08090c;
-overflow:auto;
+.panel{
+  max-width:600px;
+  margin:20px auto;
+  background:#111;
+  border:1px solid #333;
+  border-radius:18px;
+  padding:20px;
 }
 
-.admin-head{
-position:sticky;
-top:0;
-z-index:5;
-background:#101117;
-border-bottom:1px solid #292c36;
-padding:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+.panel h2{
+  margin-bottom:15px;
 }
 
-.admin-box{
-max-width:900px;
-margin:auto;
-padding:25px 20px;
+.input{
+  width:100%;
+  padding:12px;
+  margin-bottom:10px;
+  background:#191919;
+  border:1px solid #333;
+  color:white;
+  border-radius:10px;
+  outline:none;
 }
 
-.admin-card{
-background:#111218;
-border:1px solid #292c36;
-border-radius:18px;
-padding:20px;
-margin-bottom:18px;
+select.input{
+  appearance:auto;
 }
 
-.admin-card h2{
-margin-bottom:15px;
-}
-
-input,
-select{
-width:100%;
-padding:12px;
-margin:6px 0 12px;
-background:#08090c;
-border:1px solid #30333c;
-color:white;
-border-radius:10px;
-}
-
-.admin-btn{
-padding:11px 15px;
-border:0;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
-margin:3px;
-}
-
-.primary{
-background:#fff;
-color:#000;
-}
-
-.danger{
-background:#d33;
-color:#fff;
+.btn{
+  padding:11px 15px;
+  border:0;
+  border-radius:9px;
+  background:#8b5cf6;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .close{
-background:#292c36;
-color:#fff;
+  float:right;
+  background:#292929;
 }
 
-.upload{
-border:1px dashed #555b69;
-padding:18px;
-border-radius:14px;
-text-align:center;
-margin-bottom:15px;
-color:#aaa;
-}
-
-.upload input{
-border:0;
-padding:5px;
-}
-
-.preview{
-width:100%;
-height:180px;
-display:none;
-object-fit:cover;
-border-radius:14px;
-margin-bottom:15px;
-border:1px solid #333;
+.product-admin{
+  margin-top:20px;
 }
 
 .admin-item{
-display:flex;
-align-items:center;
-gap:14px;
-padding:13px;
-background:#0b0c10;
-border:1px solid #282b34;
-border-radius:12px;
-margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  border:1px solid #292929;
+  border-radius:10px;
+  margin-top:8px;
 }
 
-.admin-thumb{
-width:65px;
-height:65px;
-border-radius:10px;
-overflow:hidden;
-background:#252833;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:25px;
-flex-shrink:0;
+.admin-item img{
+  width:50px;
+  height:50px;
+  object-fit:cover;
+  border-radius:8px;
 }
 
-.admin-thumb img{
-width:100%;
-height:100%;
-object-fit:cover;
+.admin-text{
+  flex:1;
+  font-size:13px;
 }
 
-.admin-info{
-flex:1;
+.delete{
+  background:#d32f2f;
+  color:white;
+  border:0;
+  padding:8px;
+  border-radius:7px;
 }
 
-.admin-info small{
-color:#888;
+.hidden{
+  display:none;
 }
 
-.status{
-padding:10px;
-border-radius:10px;
-background:#171923;
-color:#aaa;
-margin-bottom:15px;
-font-size:13px;
+.loading{
+  text-align:center;
+  color:#888;
+  padding:30px;
 }
 
-footer{
-margin-top:60px;
-padding:30px;
-text-align:center;
-border-top:1px solid #222;
-color:#666;
-font-size:13px;
-}
+@media(max-width:420px){
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-@media(max-width:750px){
-
-.nav nav{
-display:none;
-}
-
-.games{
-grid-template-columns:repeat(2,1fr);
-}
-
-.products{
-grid-template-columns:repeat(2,1fr);
-}
-
-}
-
-@media(max-width:500px){
-
-.hero{
-padding:30px 20px;
-}
-
-.search{
-flex-direction:column;
-}
-
-.search input{
-border-radius:11px;
-}
-
-.search button{
-margin-top:8px;
-padding:13px;
-border-radius:11px;
-}
-
-.products{
-grid-template-columns:1fr;
-}
-
+  .card img,.icon{
+    height:110px;
+  }
 }
 </style>
 </head>
@@ -483,359 +330,120 @@ grid-template-columns:1fr;
 <body>
 
 <header>
-
-<div class="nav">
-
-<div class="logo">
-TOKO <span>APAN</span>
-</div>
-
-<nav>
-<a href="#home">Home</a>
-<a href="#game">Game</a>
-<a href="#produk">Produk</a>
-</nav>
-
-</div>
-
+  <div class="logo">APAN<span>TOPUP</span></div>
+  <input
+    id="search"
+    class="search"
+    type="text"
+    placeholder="Cari produk..."
+    oninput="renderProducts()"
+  >
 </header>
 
-
-<main id="home">
-
-<div class="container">
-
 <section class="hero">
-
-<small>⚡ TOKO TOP UP APAN</small>
-
-<h1>
-Top Up Game<br>
-Lebih Mudah.
-</h1>
-
-<p>
-Pilih game favoritmu dan pilih produk yang kamu inginkan.
-</p>
-
-<div class="search">
-
-<input
-id="search"
-placeholder="Cari game atau produk..."
-oninput="renderProduk()">
-
-<button onclick="renderProduk()">
-Cari
-</button>
-
-</div>
-
+  <h1>Top Up Game</h1>
+  <p>Pilih game dan produk yang kamu inginkan.</p>
 </section>
-
-
-<section class="section" id="game">
-
-<div class="title">
-<h2>Game Populer</h2>
-<span>Pilih game</span>
-</div>
 
 <div class="games">
-
-<div class="game"
-onclick="filterGame('Mobile Legends')">
-
-<div class="icon">ML</div>
-<b>Mobile Legends</b>
-<p>Diamond</p>
-
+  <button class="game active" onclick="selectGame('Semua',this)">🎮 Semua</button>
+  <button class="game" onclick="selectGame('Mobile Legends',this)">⚔️ MLBB</button>
+  <button class="game" onclick="selectGame('Free Fire',this)">🔥 Free Fire</button>
+  <button class="game" onclick="selectGame('PUBG Mobile',this)">🔫 PUBG</button>
+  <button class="game" onclick="selectGame('Valorant',this)">🎯 Valorant</button>
 </div>
-
-
-<div class="game"
-onclick="filterGame('Free Fire')">
-
-<div class="icon">FF</div>
-<b>Free Fire</b>
-<p>Diamond</p>
-
-</div>
-
-
-<div class="game"
-onclick="filterGame('PUBG Mobile')">
-
-<div class="icon">PUBG</div>
-<b>PUBG Mobile</b>
-<p>UC</p>
-
-</div>
-
-
-<div class="game"
-onclick="filterGame('Valorant')">
-
-<div class="icon">VAL</div>
-<b>Valorant</b>
-<p>Points</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section" id="produk">
-
-<div class="title">
-
-<h2>Produk</h2>
-
-<span id="jumlah">
-Memuat...
-</span>
-
-</div>
-
 
 <div class="tabs">
-
-<button
-class="active"
-onclick="setTab('Semua',this)">
-Semua
-</button>
-
-<button
-onclick="setTab('Terpopuler',this)">
-🔥 Terpopuler
-</button>
-
-<button
-onclick="setTab('Terbaru',this)">
-✨ Terbaru
-</button>
-
-<button
-onclick="setTab('Mobile Legends',this)">
-Mobile Legends
-</button>
-
-<button
-onclick="setTab('Free Fire',this)">
-Free Fire
-</button>
-
-<button
-onclick="setTab('PUBG Mobile',this)">
-PUBG
-</button>
-
-<button
-onclick="setTab('Valorant',this)">
-Valorant
-</button>
-
+  <button class="tab active" onclick="selectTab('Semua',this)">Semua</button>
+  <button class="tab" onclick="selectTab('Terpopuler',this)">Terpopuler</button>
+  <button class="tab" onclick="selectTab('Terbaru',this)">Terbaru</button>
 </div>
 
-
-<div
-class="products"
-id="products">
-</div>
-
-</section>
-
-</div>
-
+<main class="container">
+  <div class="title">Produk</div>
+  <div id="products" class="products">
+    <div class="loading">Memuat produk...</div>
+  </div>
 </main>
 
+<button class="dev-button" onclick="openDev()">DEV</button>
 
-<footer>
-© 2026 Toko APAN — Game Top Up
-</footer>
+<div id="devOverlay" class="overlay">
+  <div class="panel">
 
+    <button class="btn close" onclick="closeDev()">✕</button>
 
-<button
-class="owner"
-onclick="openLogin()">
+    <div id="loginBox">
+      <h2>DEV LOGIN</h2>
 
-⚙ DEV / PEMILIK
+      <input
+        id="devPassword"
+        class="input"
+        type="password"
+        placeholder="Password DEV"
+      >
 
-</button>
+      <button class="btn" onclick="loginDev()">Masuk</button>
+    </div>
 
+    <div id="adminBox" class="hidden">
 
-<!-- LOGIN -->
+      <h2>OWNER PANEL</h2>
 
-<div
-class="login"
-id="login">
+      <input
+        id="nama"
+        class="input"
+        placeholder="Nama produk"
+      >
 
-<div class="login-box">
+      <select id="game" class="input">
+        <option value="Mobile Legends">Mobile Legends</option>
+        <option value="Free Fire">Free Fire</option>
+        <option value="PUBG Mobile">PUBG Mobile</option>
+        <option value="Valorant">Valorant</option>
+      </select>
 
-<h2>Login Pemilik</h2>
+      <input
+        id="harga"
+        class="input"
+        placeholder="Harga, contoh: Rp10.000"
+      >
 
-<input
-id="username"
-placeholder="Username">
+      <select id="kategori" class="input">
+        <option value="Terpopuler">Terpopuler</option>
+        <option value="Terbaru">Terbaru</option>
+      </select>
 
-<input
-id="password"
-type="password"
-placeholder="Password">
+      <input
+        id="icon"
+        class="input"
+        placeholder="Emoji/icon (opsional), contoh: 💎"
+      >
 
-<button
-class="admin-btn primary"
-onclick="login()">
-Masuk
-</button>
+      <input
+        id="foto"
+        class="input"
+        type="file"
+        accept="image/*"
+      >
 
-<button
-class="admin-btn close"
-onclick="closeLogin()">
-Batal
-</button>
+      <button class="btn" onclick="addProduct()">
+        + Tambah Produk
+      </button>
 
-<p
-id="loginError"
-style="color:#f55;margin-top:12px">
-</p>
+      <div class="product-admin">
+        <h3>Daftar Produk</h3>
+        <div id="adminProducts"></div>
+      </div>
 
+    </div>
+  </div>
 </div>
-
-</div>
-
-
-<!-- PANEL DEV -->
-
-<div id="admin">
-
-<div class="admin-head">
-
-<b>
-⚙ PANEL DEV / PEMILIK
-</b>
-
-<button
-class="admin-btn close"
-onclick="closeAdmin()">
-Tutup
-</button>
-
-</div>
-
-
-<div class="admin-box">
-
-
-<div class="admin-card">
-
-<h2>
-➕ Tambah Produk
-</h2>
-
-
-<div
-id="dbStatus"
-class="status">
-
-Menghubungkan ke Supabase...
-
-</div>
-
-
-<input
-id="pNama"
-placeholder="Nama produk">
-
-
-<select id="pGame">
-
-<option>Mobile Legends</option>
-<option>Free Fire</option>
-<option>PUBG Mobile</option>
-<option>Valorant</option>
-
-</select>
-
-
-<input
-id="pHarga"
-placeholder="Harga contoh: Rp 20.000">
-
-
-<select id="pKategori">
-
-<option>Terpopuler</option>
-<option>Terbaru</option>
-
-</select>
-
-
-<h3 style="margin:10px 0">
-🖼️ Foto Produk
-</h3>
-
-
-<div class="upload">
-
-Pilih foto dari galeri HP
-
-<input
-id="pFoto"
-type="file"
-accept="image/*"
-onchange="previewFoto(event)">
-
-</div>
-
-
-<img
-id="fotoPreview"
-class="preview">
-
-
-<input
-id="pIcon"
-placeholder="Emoji cadangan, contoh: 💎">
-
-
-<button
-id="tambahBtn"
-class="admin-btn primary"
-onclick="tambahProduk()">
-
-+ Tambahkan Produk
-
-</button>
-
-</div>
-
-
-<div class="admin-card">
-
-<h2>
-📦 Produk Online
-</h2>
-
-<div id="adminProducts">
-Memuat produk...
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 
 <script>
-
-/* =====================================
+/* =========================
    SUPABASE
-===================================== */
+========================= */
 
 const SUPABASE_URL =
 "https://qgbyyutbuxklqkxwzgiz.supabase.co";
@@ -845,732 +453,544 @@ const SUPABASE_KEY =
 
 const supabaseClient =
 window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
+  SUPABASE_URL,
+  SUPABASE_KEY
 );
 
 
-/* =====================================
+/* =========================
    DATA
-===================================== */
+========================= */
 
-let produk = [];
+let products = [];
+let selectedGame = "Semua";
+let selectedTab = "Semua";
+let devLoggedIn = false;
 
-let tab = "Semua";
 
+/* =========================
+   LOAD PRODUCTS
+========================= */
 
-/* =====================================
-   AMANKAN TEXT
-===================================== */
+async function loadProducts(){
 
-function esc(value){
+  const container =
+    document.getElementById("products");
 
-return String(value ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+  container.innerHTML =
+    '<div class="loading">Memuat produk...</div>';
 
+  const { data, error } =
+    await supabaseClient
+      .from("product")
+      .select("*")
+      .order("created_at", {
+        ascending:false
+      });
+
+  if(error){
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="empty">
+        Gagal memuat produk.<br><br>
+        <small>${escapeHtml(error.message)}</small>
+      </div>
+    `;
+
+    return;
+  }
+
+  products = data || [];
+
+  renderProducts();
+
+  if(devLoggedIn){
+    renderAdminProducts();
+  }
 }
 
 
-/* =====================================
-   AMBIL PRODUK DARI SUPABASE
-===================================== */
+/* =========================
+   RENDER PRODUCTS
+========================= */
+
+function renderProducts(){
+
+  const container =
+    document.getElementById("products");
+
+  const search =
+    document
+      .getElementById("search")
+      .value
+      .toLowerCase()
+      .trim();
+
+  let filtered = [...products];
+
+  if(selectedGame !== "Semua"){
+    filtered =
+      filtered.filter(
+        p => p.game === selectedGame
+      );
+  }
+
+  if(selectedTab !== "Semua"){
+    filtered =
+      filtered.filter(
+        p => p.kategori === selectedTab
+      );
+  }
+
+  if(search){
+    filtered =
+      filtered.filter(p =>
+        String(p.nama || "")
+          .toLowerCase()
+          .includes(search)
+        ||
+        String(p.game || "")
+          .toLowerCase()
+          .includes(search)
+      );
+  }
+
+  if(filtered.length === 0){
+
+    container.innerHTML = `
+      <div class="empty">
+        Belum ada produk.
+      </div>
+    `;
+
+    return;
+  }
+
+  container.innerHTML =
+    filtered.map(p => {
+
+      let media = "";
+
+      if(p.foto){
+
+        media = `
+          <img
+            src="${escapeAttribute(p.foto)}"
+            alt="${escapeAttribute(p.nama || "Produk")}"
+            loading="lazy"
+          >
+        `;
+
+      }else{
+
+        media = `
+          <div class="icon">
+            ${escapeHtml(p.icon || "🎮")}
+          </div>
+        `;
+      }
+
+      return `
+        <div class="card">
+
+          ${media}
+
+          <div class="info">
+
+            <div class="game-name">
+              ${escapeHtml(p.game || "")}
+            </div>
+
+            <div class="product-name">
+              ${escapeHtml(p.nama || "")}
+            </div>
+
+            <div class="price">
+              ${escapeHtml(p.harga || "")}
+            </div>
+
+            <button
+              class="buy"
+              onclick="beliProduk(${Number(p.id)})"
+            >
+              Beli
+            </button>
 
-async function loadProduk(){
+          </div>
 
-const status =
-document.getElementById("dbStatus");
+        </div>
+      `;
 
-
-const {data,error} =
-await supabaseClient
-.from("produk")
-.select("*")
-.order("created_at",{
-ascending:false
-});
-
-
-if(error){
-
-console.error(error);
-
-if(status){
-
-status.innerText =
-"❌ Database error: "+
-error.message;
-
-}
-
-document.getElementById("products")
-.innerHTML =
-`<p style="color:#f66">
-Gagal mengambil produk.
-</p>`;
-
-return;
-
-}
-
-
-produk = data || [];
-
-
-if(status){
-
-status.innerText =
-"✅ Database online • "+
-produk.length+
-" produk";
-
-}
-
-
-renderProduk();
-
-renderAdmin();
-
-}
-
-
-/* =====================================
-   TAMPILKAN PRODUK
-===================================== */
-
-function renderProduk(){
-
-const search =
-document.getElementById("search");
-
-
-const q =
-(search?.value || "")
-.toLowerCase();
-
-
-const hasil =
-produk.filter(p=>{
-
-const cocokTab =
-tab==="Semua" ||
-p.game===tab ||
-p.kategori===tab;
-
-
-const cocokSearch =
-(`${p.nama} ${p.game}`)
-.toLowerCase()
-.includes(q);
-
-
-return cocokTab && cocokSearch;
-
-});
-
-
-document.getElementById("jumlah")
-.innerText =
-hasil.length+
-" produk";
-
-
-if(!hasil.length){
-
-document.getElementById("products")
-.innerHTML =
-`<p style="color:#888">
-Belum ada produk.
-</p>`;
-
-return;
-
-}
-
-
-document.getElementById("products")
-.innerHTML =
-
-hasil.map(p=>`
-
-<div class="product">
-
-<div class="product-img">
-
-${
-p.foto
-
-?
-
-`<img
-src="${esc(p.foto)}"
-alt="${esc(p.nama)}">`
-
-:
-
-esc(p.icon || "🎮")
-}
-
-</div>
-
-
-<div class="info">
-
-<small>
-${esc(p.game)}
-•
-${esc(p.kategori || "Produk")}
-</small>
-
-
-<h3>
-${esc(p.nama)}
-</h3>
-
-
-<div class="price">
-${esc(p.harga)}
-</div>
-
-
-<button
-class="buy"
-onclick="beliProduk('${esc(p.nama)}','${esc(p.harga)}')">
-
-Beli
-
-</button>
-
-</div>
-
-</div>
-
-`).join("");
-
+    }).join("");
 }
 
 
-/* =====================================
+/* =========================
    FILTER
-===================================== */
+========================= */
 
-function setTab(nama,button){
+function selectGame(game, button){
 
-tab = nama;
+  selectedGame = game;
 
+  document
+    .querySelectorAll(".game")
+    .forEach(b => b.classList.remove("active"));
 
-document
-.querySelectorAll(".tabs button")
-.forEach(x=>
-x.classList.remove("active")
-);
+  button.classList.add("active");
 
-
-button.classList.add("active");
-
-
-renderProduk();
-
+  renderProducts();
 }
 
 
-function filterGame(nama){
+function selectTab(tab, button){
 
-tab = nama;
+  selectedTab = tab;
 
+  document
+    .querySelectorAll(".tab")
+    .forEach(b => b.classList.remove("active"));
 
-document
-.getElementById("produk")
-.scrollIntoView({
-behavior:"smooth"
-});
+  button.classList.add("active");
 
-
-renderProduk();
-
+  renderProducts();
 }
 
 
-/* =====================================
-   LOGIN DEV
-===================================== */
+/* =========================
+   BUY
+========================= */
 
-function openLogin(){
+function beliProduk(id){
 
-document.getElementById("login")
-.style.display="flex";
+  const product =
+    products.find(
+      p => Number(p.id) === Number(id)
+    );
 
+  if(!product) return;
+
+  alert(
+    "Produk: " +
+    product.nama +
+    "\nHarga: " +
+    product.harga +
+    "\n\nSilakan lanjutkan pembayaran sesuai sistem toko."
+  );
 }
 
 
-function closeLogin(){
+/* =========================
+   DEV
+========================= */
 
-document.getElementById("login")
-.style.display="none";
+function openDev(){
 
+  document
+    .getElementById("devOverlay")
+    .style.display = "block";
 }
 
 
-function login(){
+function closeDev(){
 
-const username =
-document.getElementById("username")
-.value;
-
-const password =
-document.getElementById("password")
-.value;
-
-
-if(
-username === "admin" &&
-password === "APAN123"
-){
-
-closeLogin();
-
-document.getElementById("admin")
-.style.display="block";
-
-renderAdmin();
-
-}else{
-
-document.getElementById("loginError")
-.innerText =
-"Username atau password salah.";
-
-}
-
+  document
+    .getElementById("devOverlay")
+    .style.display = "none";
 }
 
 
-function closeAdmin(){
+function loginDev(){
 
-document.getElementById("admin")
-.style.display="none";
+  const password =
+    document
+      .getElementById("devPassword")
+      .value;
 
+  if(password === "APAN123"){
+
+    devLoggedIn = true;
+
+    document
+      .getElementById("loginBox")
+      .classList.add("hidden");
+
+    document
+      .getElementById("adminBox")
+      .classList.remove("hidden");
+
+    renderAdminProducts();
+
+  }else{
+
+    alert("Password salah.");
+
+  }
 }
 
 
-/* =====================================
-   PREVIEW FOTO
-===================================== */
+/* =========================
+   ADD PRODUCT
+========================= */
 
-function previewFoto(event){
+async function addProduct(){
 
-const file =
-event.target.files[0];
+  if(!devLoggedIn){
+    alert("Silakan login DEV.");
+    return;
+  }
+
+  const nama =
+    document.getElementById("nama").value.trim();
+
+  const game =
+    document.getElementById("game").value;
+
+  const harga =
+    document.getElementById("harga").value.trim();
+
+  const kategori =
+    document.getElementById("kategori").value;
+
+  const icon =
+    document.getElementById("icon").value.trim();
+
+  const file =
+    document.getElementById("foto").files[0];
+
+  if(!nama || !harga){
+
+    alert("Nama produk dan harga wajib diisi.");
+    return;
+  }
+
+  let fotoUrl = null;
+
+  /* Upload foto ke bucket PRODUCT */
+
+  if(file){
+
+    const extension =
+      file.name.split(".").pop();
+
+    const fileName =
+      "produk/" +
+      Date.now() +
+      "-" +
+      Math.random()
+        .toString(36)
+        .substring(2) +
+      "." +
+      extension;
+
+    const { error: uploadError } =
+      await supabaseClient
+        .storage
+        .from("product")
+        .upload(
+          fileName,
+          file,
+          {
+            upsert:false,
+            contentType:file.type
+          }
+        );
+
+    if(uploadError){
+
+      console.error(uploadError);
+
+      alert(
+        "Foto gagal diupload:\n" +
+        uploadError.message
+      );
+
+      return;
+    }
+
+    const { data:urlData } =
+      supabaseClient
+        .storage
+        .from("product")
+        .getPublicUrl(fileName);
+
+    fotoUrl =
+      urlData.publicUrl;
+  }
 
 
-if(!file)return;
+  /* Insert ke tabel PRODUCT */
+
+  const produkBaru = {
+    nama:nama,
+    game:game,
+    harga:harga,
+    kategori:kategori,
+    icon:icon || null,
+    foto:fotoUrl
+  };
 
 
-if(!file.type.startsWith("image/")){
+  const { error } =
+    await supabaseClient
+      .from("product")
+      .insert([produkBaru]);
 
-alert(
-"File harus berupa foto."
-);
 
-event.target.value="";
+  if(error){
 
-return;
+    console.error(error);
 
+    alert(
+      "Produk gagal ditambahkan:\n" +
+      error.message
+    );
+
+    return;
+  }
+
+
+  alert("Produk berhasil ditambahkan.");
+
+  document.getElementById("nama").value = "";
+  document.getElementById("harga").value = "";
+  document.getElementById("icon").value = "";
+  document.getElementById("foto").value = "";
+
+  await loadProducts();
 }
 
 
-if(file.size > 5*1024*1024){
+/* =========================
+   ADMIN PRODUCTS
+========================= */
 
-alert(
-"Ukuran foto maksimal 5 MB."
-);
+function renderAdminProducts(){
 
-event.target.value="";
+  const box =
+    document.getElementById("adminProducts");
 
-return;
+  if(!products.length){
 
+    box.innerHTML =
+      '<p style="color:#777;margin-top:10px">Belum ada produk.</p>';
+
+    return;
+  }
+
+  box.innerHTML =
+    products.map(p => {
+
+      const image =
+        p.foto
+          ? `<img src="${escapeAttribute(p.foto)}">`
+          : `<div style="
+                width:50px;
+                height:50px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:25px;
+                background:#222;
+                border-radius:8px;
+              ">${escapeHtml(p.icon || "🎮")}</div>`;
+
+      return `
+        <div class="admin-item">
+
+          ${image}
+
+          <div class="admin-text">
+            <b>${escapeHtml(p.nama || "")}</b><br>
+            <span style="color:#888">
+              ${escapeHtml(p.game || "")}
+            </span><br>
+            <span style="color:#a78bfa">
+              ${escapeHtml(p.harga || "")}
+            </span>
+          </div>
+
+          <button
+            class="delete"
+            onclick="deleteProduct(${Number(p.id)})"
+          >
+            Hapus
+          </button>
+
+        </div>
+      `;
+
+    }).join("");
 }
 
 
-const reader =
-new FileReader();
+/* =========================
+   DELETE PRODUCT
+========================= */
 
+async function deleteProduct(id){
 
-reader.onload =
-function(e){
+  if(!confirm("Hapus produk ini?")){
+    return;
+  }
 
-const preview =
-document.getElementById("fotoPreview");
+  const { error } =
+    await supabaseClient
+      .from("product")
+      .delete()
+      .eq("id", id);
 
+  if(error){
 
-preview.src =
-e.target.result;
+    console.error(error);
 
+    alert(
+      "Produk gagal dihapus:\n" +
+      error.message
+    );
 
-preview.style.display =
-"block";
+    return;
+  }
 
-};
+  alert("Produk berhasil dihapus.");
 
-
-reader.readAsDataURL(file);
-
+  await loadProducts();
 }
 
 
-/* =====================================
-   UPLOAD FOTO
-   BUCKET = product
-===================================== */
+/* =========================
+   SECURITY DISPLAY HELPERS
+========================= */
 
-async function uploadFoto(file){
+function escapeHtml(value){
 
-if(!file)return null;
-
-
-const extension =
-file.name
-.split(".")
-.pop()
-.toLowerCase();
-
-
-const fileName =
-Date.now()+
-"-"+
-Math.random()
-.toString(36)
-.substring(2)+
-"."+
-extension;
-
-
-const path =
-"produk/"+fileName;
-
-
-const {error} =
-await supabaseClient
-.storage
-.from("product")
-.upload(
-path,
-file,
-{
-contentType:file.type,
-upsert:false
-}
-);
-
-
-if(error){
-
-throw new Error(
-"Upload foto gagal: "+
-error.message
-);
-
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 
-const {data} =
-supabaseClient
-.storage
-.from("product")
-.getPublicUrl(path);
+function escapeAttribute(value){
 
-
-return data.publicUrl;
-
+  return escapeHtml(value);
 }
 
 
-/* =====================================
-   TAMBAH PRODUK
-===================================== */
-
-async function tambahProduk(){
-
-const nama =
-document.getElementById("pNama")
-.value.trim();
-
-
-const game =
-document.getElementById("pGame")
-.value;
-
-
-const harga =
-document.getElementById("pHarga")
-.value.trim();
-
-
-const kategori =
-document.getElementById("pKategori")
-.value;
-
-
-const icon =
-document.getElementById("pIcon")
-.value.trim() ||
-"🎮";
-
-
-const file =
-document.getElementById("pFoto")
-.files[0];
-
-
-if(!nama || !harga){
-
-alert(
-"Nama produk dan harga wajib diisi."
-);
-
-return;
-
-}
-
-
-const tombol =
-document.getElementById("tambahBtn");
-
-
-tombol.disabled=true;
-
-tombol.innerText =
-"Menyimpan...";
-
-
-try{
-
-let fotoUrl = null;
-
-
-if(file){
-
-fotoUrl =
-await uploadFoto(file);
-
-}
-
-
-const {error} =
-await supabaseClient
-.from("produk")
-.insert({
-
-nama:nama,
-
-game:game,
-
-harga:harga,
-
-kategori:kategori,
-
-icon:icon,
-
-foto:fotoUrl
-
-});
-
-
-if(error){
-
-throw new Error(
-error.message
-);
-
-}
-
-
-document.getElementById("pNama")
-.value="";
-
-document.getElementById("pHarga")
-.value="";
-
-document.getElementById("pIcon")
-.value="";
-
-document.getElementById("pFoto")
-.value="";
-
-
-document.getElementById("fotoPreview")
-.style.display="none";
-
-
-alert(
-"✅ Produk berhasil disimpan!"
-);
-
-
-await loadProduk();
-
-
-}catch(error){
-
-console.error(error);
-
-
-alert(
-"❌ Gagal menyimpan produk:\n\n"+
-error.message
-);
-
-}
-
-
-tombol.disabled=false;
-
-tombol.innerText =
-"+ Tambahkan Produk";
-
-}
-
-
-/* =====================================
-   DAFTAR PRODUK DI DEV
-===================================== */
-
-function renderAdmin(){
-
-const box =
-document.getElementById("adminProducts");
-
-
-if(!box)return;
-
-
-if(!produk.length){
-
-box.innerHTML =
-`<p style="color:#888">
-Belum ada produk.
-</p>`;
-
-return;
-
-}
-
-
-box.innerHTML =
-
-produk.map(p=>`
-
-<div class="admin-item">
-
-
-<div class="admin-thumb">
-
-${
-p.foto
-
-?
-
-`<img src="${esc(p.foto)}">`
-
-:
-
-esc(p.icon || "🎮")
-}
-
-</div>
-
-
-<div class="admin-info">
-
-<b>
-${esc(p.nama)}
-</b>
-
-<br>
-
-<small>
-${esc(p.game)}
-•
-${esc(p.harga)}
-</small>
-
-</div>
-
-
-<button
-class="admin-btn danger"
-onclick="hapusProduk('${esc(p.id)}')">
-
-Hapus
-
-</button>
-
-
-</div>
-
-`).join("");
-
-}
-
-
-/* =====================================
-   HAPUS PRODUK
-===================================== */
-
-async function hapusProduk(id){
-
-if(!confirm(
-"Yakin ingin menghapus produk ini?"
-)){
-
-return;
-
-}
-
-
-const {error} =
-await supabaseClient
-.from("produk")
-.delete()
-.eq("id",id);
-
-
-if(error){
-
-alert(
-"Gagal menghapus:\n"+
-error.message
-);
-
-return;
-
-}
-
-
-await loadProduk();
-
-}
-
-
-/* =====================================
-   JALANKAN
-===================================== */
-
-loadProduk();
-
-
-/* =====================================
-   CEK DATA BARU OTOMATIS
-===================================== */
+/* =========================
+   AUTO REFRESH
+========================= */
+
+loadProducts();
 
 setInterval(
-loadProduk,
-15000
+  loadProducts,
+  15000
 );
-
 </script>
 
 </body>
