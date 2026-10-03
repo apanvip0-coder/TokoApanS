@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APAN TOP UP</title>
+
+<title>APAN STR JUAL BELI GAME</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -12,316 +13,457 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,sans-serif;
 }
 
 body{
-  background:#080808;
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at top left,#252525 0,#101010 35%,#050505 75%);
   color:white;
   min-height:100vh;
+}
+
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
 }
 
 header{
   position:sticky;
   top:0;
-  z-index:20;
-  background:rgba(10,10,10,.85);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid #222;
+  z-index:50;
+  background:rgba(10,10,10,.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav{
+  max-width:1150px;
+  margin:auto;
   padding:15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
 .logo{
-  font-size:25px;
+  font-size:21px;
   font-weight:900;
-  letter-spacing:2px;
+  letter-spacing:.5px;
 }
 
 .logo span{
-  color:#8b5cf6;
+  display:block;
+  font-size:10px;
+  opacity:.55;
+  letter-spacing:2px;
+  margin-top:3px;
+}
+
+.dev-btn{
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.08);
+  color:white;
+  padding:9px 13px;
+  border-radius:12px;
+}
+
+.container{
+  width:calc(100% - 28px);
+  max-width:1150px;
+  margin:auto;
+}
+
+.hero{
+  margin-top:22px;
+  padding:28px 22px;
+  border-radius:25px;
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,.12),
+      rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.hero small{
+  opacity:.55;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+.hero h1{
+  margin-top:8px;
+  font-size:clamp(28px,7vw,52px);
+  line-height:1;
+}
+
+.hero p{
+  margin-top:12px;
+  color:#aaa;
 }
 
 .search{
+  margin-top:18px;
+}
+
+.search input{
   width:100%;
-  margin-top:14px;
-  padding:13px 16px;
-  border-radius:12px;
-  border:1px solid #333;
-  background:#151515;
+  padding:15px 17px;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,.12);
+  background:#111;
   color:white;
   outline:none;
 }
 
-.hero{
-  margin:18px;
-  padding:25px;
-  border-radius:20px;
-  background:
-    radial-gradient(circle at top right,#663cff55,transparent 45%),
-    linear-gradient(135deg,#171717,#0b0b0b);
-  border:1px solid #292929;
+.search input:focus{
+  border-color:#777;
 }
 
-.hero h1{
-  font-size:28px;
-  margin-bottom:8px;
+.section{
+  margin-top:28px;
 }
 
-.hero p{
-  color:#aaa;
-  font-size:14px;
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
+
+.section-title h2{
+  font-size:20px;
 }
 
 .games{
-  display:flex;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
   gap:10px;
-  overflow-x:auto;
-  padding:0 18px 15px;
 }
 
 .game{
-  min-width:110px;
-  padding:12px;
-  border:1px solid #292929;
-  border-radius:13px;
-  background:#121212;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.05);
   color:white;
-  cursor:pointer;
+  padding:14px 8px;
+  border-radius:16px;
   text-align:center;
 }
 
-.game.active{
-  border-color:#8b5cf6;
-  background:#21133e;
+.game:hover{
+  background:rgba(255,255,255,.1);
 }
 
 .tabs{
   display:flex;
   gap:8px;
   overflow-x:auto;
-  padding:0 18px 18px;
+  padding-bottom:3px;
 }
 
 .tab{
   white-space:nowrap;
-  padding:9px 15px;
-  border-radius:20px;
-  border:1px solid #292929;
+  border:1px solid rgba(255,255,255,.1);
   background:#111;
   color:#aaa;
-  cursor:pointer;
+  padding:9px 14px;
+  border-radius:999px;
 }
 
 .tab.active{
-  color:white;
-  background:#8b5cf6;
-  border-color:#8b5cf6;
-}
-
-.container{
-  padding:0 18px 40px;
-}
-
-.title{
-  font-size:20px;
-  font-weight:bold;
-  margin-bottom:14px;
+  background:white;
+  color:black;
 }
 
 .products{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
 }
 
 .card{
-  background:#121212;
-  border:1px solid #292929;
-  border-radius:15px;
   overflow:hidden;
+  border-radius:19px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 12px 35px rgba(0,0,0,.2);
 }
 
-.card img{
+.product-image{
+  position:relative;
   width:100%;
-  height:125px;
+  aspect-ratio:1/1;
+  background:#151515;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
   object-fit:cover;
-  background:#1c1c1c;
+  display:block;
+  transition:.25s;
 }
 
-.icon{
-  height:125px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:48px;
-  background:linear-gradient(135deg,#191919,#252525);
+.product-image:hover img{
+  transform:scale(1.04);
 }
 
-.info{
-  padding:12px;
+.status{
+  position:absolute;
+  top:10px;
+  left:10px;
+  padding:6px 9px;
+  border-radius:9px;
+  font-size:10px;
+  font-weight:bold;
+  backdrop-filter:blur(10px);
+}
+
+.available{
+  background:rgba(20,150,80,.9);
+}
+
+.sold{
+  background:rgba(200,40,40,.9);
+}
+
+.card-body{
+  padding:13px;
 }
 
 .game-name{
-  color:#888;
   font-size:11px;
+  color:#888;
   margin-bottom:5px;
 }
 
 .product-name{
+  font-size:16px;
   font-weight:bold;
-  font-size:15px;
-  min-height:38px;
 }
 
 .price{
-  color:#a78bfa;
+  margin-top:9px;
+  font-size:17px;
   font-weight:bold;
-  margin:8px 0;
 }
 
 .buy{
   width:100%;
+  margin-top:12px;
   border:0;
-  padding:10px;
-  border-radius:9px;
-  background:#8b5cf6;
-  color:white;
+  border-radius:12px;
+  padding:12px;
+  background:white;
+  color:black;
   font-weight:bold;
-  cursor:pointer;
 }
 
-.buy:active{
-  transform:scale(.97);
+.buy:hover{
+  opacity:.85;
+}
+
+.buy.sold-button{
+  background:#292929;
+  color:#777;
+  cursor:not-allowed;
 }
 
 .empty{
   grid-column:1/-1;
   text-align:center;
-  color:#777;
   padding:40px 10px;
+  color:#777;
 }
 
-.dev-button{
-  position:fixed;
-  right:15px;
-  bottom:15px;
-  z-index:30;
-  border:0;
-  border-radius:50%;
-  width:52px;
-  height:52px;
-  background:#8b5cf6;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 5px 25px #000;
+footer{
+  margin-top:50px;
+  padding:30px 15px;
+  text-align:center;
+  color:#666;
+  border-top:1px solid rgba(255,255,255,.06);
 }
 
-.overlay{
-  display:none;
+/* MODAL */
+
+.modal{
   position:fixed;
   inset:0;
-  z-index:50;
-  background:#000b;
-  backdrop-filter:blur(8px);
-  overflow:auto;
-  padding:20px;
+  z-index:100;
+  background:rgba(0,0,0,.86);
+  backdrop-filter:blur(10px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
 }
 
-.panel{
-  max-width:600px;
-  margin:20px auto;
-  background:#111;
-  border:1px solid #333;
-  border-radius:18px;
-  padding:20px;
+.modal.show{
+  display:flex;
 }
 
-.panel h2{
-  margin-bottom:15px;
-}
-
-.input{
+.modal-box{
   width:100%;
-  padding:12px;
-  margin-bottom:10px;
-  background:#191919;
-  border:1px solid #333;
-  color:white;
-  border-radius:10px;
-  outline:none;
-}
-
-select.input{
-  appearance:auto;
-}
-
-.btn{
-  padding:11px 15px;
-  border:0;
-  border-radius:9px;
-  background:#8b5cf6;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
+  max-width:650px;
+  max-height:94vh;
+  overflow:auto;
+  background:#111;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:22px;
+  padding:18px;
 }
 
 .close{
   float:right;
+  border:0;
   background:#292929;
+  color:white;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  font-size:20px;
 }
 
-.product-admin{
+.full-image{
+  width:100%;
+  max-height:80vh;
+  object-fit:contain;
+  border-radius:15px;
+  margin-top:10px;
+}
+
+/* DEV */
+
+.dev-panel{
+  display:none;
+  margin-top:25px;
+  padding:20px;
+  border-radius:22px;
+  background:#101010;
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.dev-panel.show{
+  display:block;
+}
+
+.dev-panel h2{
+  margin-bottom:15px;
+}
+
+.form{
+  display:grid;
+  gap:10px;
+}
+
+.form input,
+.form select{
+  width:100%;
+  padding:13px;
+  border-radius:12px;
+  border:1px solid #292929;
+  background:#181818;
+  color:white;
+  outline:none;
+}
+
+.form button{
+  padding:13px;
+  border:0;
+  border-radius:12px;
+  background:white;
+  color:black;
+  font-weight:bold;
+}
+
+.preview{
+  width:100%;
+  max-height:180px;
+  object-fit:cover;
+  border-radius:12px;
+  display:none;
+}
+
+.admin-products{
   margin-top:20px;
+  display:grid;
+  gap:10px;
 }
 
 .admin-item{
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:10px;
-  border:1px solid #292929;
-  border-radius:10px;
-  margin-top:8px;
+  gap:12px;
+  padding:12px;
+  background:#171717;
+  border:1px solid #252525;
+  border-radius:15px;
 }
 
 .admin-item img{
-  width:50px;
-  height:50px;
+  width:55px;
+  height:55px;
   object-fit:cover;
-  border-radius:8px;
+  border-radius:10px;
 }
 
-.admin-text{
+.admin-info{
   flex:1;
-  font-size:13px;
 }
 
-.delete{
-  background:#d32f2f;
-  color:white;
+.admin-info b{
+  display:block;
+}
+
+.admin-info small{
+  color:#777;
+}
+
+.admin-actions{
+  display:flex;
+  gap:6px;
+}
+
+.admin-actions button{
   border:0;
-  padding:8px;
-  border-radius:7px;
+  padding:8px 10px;
+  border-radius:9px;
+  color:white;
 }
 
-.hidden{
-  display:none;
+.edit-btn{
+  background:#444;
 }
 
-.loading{
-  text-align:center;
-  color:#888;
-  padding:30px;
+.delete-btn{
+  background:#8d2222;
 }
 
-@media(max-width:420px){
+.cancel-btn{
+  background:#333!important;
+  color:white!important;
+}
+
+@media(max-width:800px){
   .products{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .card img,.icon{
-    height:110px;
+  .games{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(min-width:801px){
+  .hero{
+    padding:45px;
   }
 }
 </style>
@@ -330,120 +472,211 @@ select.input{
 <body>
 
 <header>
-  <div class="logo">APAN<span>TOPUP</span></div>
-  <input
-    id="search"
-    class="search"
-    type="text"
-    placeholder="Cari produk..."
-    oninput="renderProducts()"
-  >
-</header>
+  <div class="nav">
 
-<section class="hero">
-  <h1>Top Up Game</h1>
-  <p>Pilih game dan produk yang kamu inginkan.</p>
-</section>
-
-<div class="games">
-  <button class="game active" onclick="selectGame('Semua',this)">🎮 Semua</button>
-  <button class="game" onclick="selectGame('Mobile Legends',this)">⚔️ MLBB</button>
-  <button class="game" onclick="selectGame('Free Fire',this)">🔥 Free Fire</button>
-  <button class="game" onclick="selectGame('PUBG Mobile',this)">🔫 PUBG</button>
-  <button class="game" onclick="selectGame('Valorant',this)">🎯 Valorant</button>
-</div>
-
-<div class="tabs">
-  <button class="tab active" onclick="selectTab('Semua',this)">Semua</button>
-  <button class="tab" onclick="selectTab('Terpopuler',this)">Terpopuler</button>
-  <button class="tab" onclick="selectTab('Terbaru',this)">Terbaru</button>
-</div>
-
-<main class="container">
-  <div class="title">Produk</div>
-  <div id="products" class="products">
-    <div class="loading">Memuat produk...</div>
-  </div>
-</main>
-
-<button class="dev-button" onclick="openDev()">DEV</button>
-
-<div id="devOverlay" class="overlay">
-  <div class="panel">
-
-    <button class="btn close" onclick="closeDev()">✕</button>
-
-    <div id="loginBox">
-      <h2>DEV LOGIN</h2>
-
-      <input
-        id="devPassword"
-        class="input"
-        type="password"
-        placeholder="Password DEV"
-      >
-
-      <button class="btn" onclick="loginDev()">Masuk</button>
+    <div class="logo">
+      APAN STR
+      <span>JUAL BELI GAME</span>
     </div>
 
-    <div id="adminBox" class="hidden">
+    <button class="dev-btn" onclick="openDev()">
+      ⚙ DEV
+    </button>
 
-      <h2>OWNER PANEL</h2>
+  </div>
+</header>
+
+
+<main class="container">
+
+  <section class="hero">
+
+    <small>APAN STR STORE</small>
+
+    <h1>Jual Beli Game</h1>
+
+    <p>
+      Tempat jual beli game dan produk gaming pilihan.
+    </p>
+
+    <div class="search">
+      <input
+        id="search"
+        type="text"
+        placeholder="🔎 Cari game atau produk..."
+        oninput="renderProducts()"
+      >
+    </div>
+
+  </section>
+
+
+  <section class="section">
+
+    <div class="section-title">
+      <h2>🎮 Pilih Game</h2>
+    </div>
+
+    <div class="games">
+
+      <button class="game" onclick="selectGame('Mobile Legends')">
+        Mobile Legends
+      </button>
+
+      <button class="game" onclick="selectGame('Free Fire')">
+        Free Fire
+      </button>
+
+      <button class="game" onclick="selectGame('PUBG Mobile')">
+        PUBG Mobile
+      </button>
+
+      <button class="game" onclick="selectGame('Valorant')">
+        Valorant
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="section">
+
+    <div class="section-title">
+      <h2>Produk</h2>
+    </div>
+
+    <div class="tabs">
+
+      <button class="tab active" onclick="setTab('semua',this)">
+        Semua
+      </button>
+
+      <button class="tab" onclick="setTab('TERSEDIA',this)">
+        Tersedia
+      </button>
+
+      <button class="tab" onclick="setTab('SOLD OUT',this)">
+        Sold Out
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="section">
+
+    <div id="products" class="products">
+      <div class="empty">
+        Memuat produk...
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- DEV PANEL -->
+
+  <section id="devPanel" class="dev-panel">
+
+    <h2>⚙ DEV / OWNER</h2>
+
+    <form class="form" onsubmit="saveProduct(event)">
+
+      <input type="hidden" id="editId">
 
       <input
         id="nama"
-        class="input"
+        required
         placeholder="Nama produk"
       >
 
-      <select id="game" class="input">
-        <option value="Mobile Legends">Mobile Legends</option>
-        <option value="Free Fire">Free Fire</option>
-        <option value="PUBG Mobile">PUBG Mobile</option>
-        <option value="Valorant">Valorant</option>
-      </select>
+      <input
+        id="game"
+        required
+        placeholder="Game"
+      >
 
       <input
         id="harga"
-        class="input"
-        placeholder="Harga, contoh: Rp10.000"
+        required
+        placeholder="Harga, contoh: Rp 150.000"
       >
 
-      <select id="kategori" class="input">
-        <option value="Terpopuler">Terpopuler</option>
-        <option value="Terbaru">Terbaru</option>
-      </select>
+      <input
+        id="kategori"
+        placeholder="Kategori, contoh: Akun / Game"
+      >
 
       <input
         id="icon"
-        class="input"
-        placeholder="Emoji/icon (opsional), contoh: 💎"
+        placeholder="Emoji/icon, contoh: 🎮"
       >
+
+      <select id="status">
+        <option value="TERSEDIA">TERSEDIA</option>
+        <option value="SOLD OUT">SOLD OUT</option>
+      </select>
 
       <input
         id="foto"
-        class="input"
         type="file"
         accept="image/*"
+        onchange="previewImage(event)"
       >
 
-      <button class="btn" onclick="addProduct()">
-        + Tambah Produk
+      <img id="preview" class="preview">
+
+      <button type="submit" id="saveButton">
+        ➕ Tambah Produk
       </button>
 
-      <div class="product-admin">
-        <h3>Daftar Produk</h3>
-        <div id="adminProducts"></div>
-      </div>
+      <button
+        type="button"
+        class="cancel-btn"
+        onclick="cancelEdit()"
+      >
+        Batal / Reset
+      </button>
 
-    </div>
+    </form>
+
+
+    <div class="admin-products" id="adminProducts"></div>
+
+  </section>
+
+</main>
+
+
+<footer>
+  © 2026 APAN STR JUAL BELI GAME
+</footer>
+
+
+<!-- FULLSCREEN IMAGE -->
+
+<div id="imageModal" class="modal" onclick="closeImageModal()">
+
+  <div class="modal-box" onclick="event.stopPropagation()">
+
+    <button class="close" onclick="closeImageModal()">
+      ×
+    </button>
+
+    <img id="fullImage" class="full-image">
+
   </div>
+
 </div>
 
+
 <script>
-/* =========================
+
+/* =========================================
    SUPABASE
-========================= */
+========================================= */
 
 const SUPABASE_URL =
 "https://qgbyyutbuxklqkxwzgiz.supabase.co";
@@ -458,46 +691,53 @@ window.supabase.createClient(
 );
 
 
-/* =========================
+/* =========================================
+   WHATSAPP
+========================================= */
+
+/*
+  GANTI ANGKA DI BAWAH DENGAN NOMOR WHATSAPP
+  CONTOH:
+  6281234567890
+
+  Jangan gunakan + atau spasi.
+*/
+
+const WHATSAPP_NUMBER = "628XXXXXXXXXX";
+
+
+/* =========================================
    DATA
-========================= */
+========================================= */
 
 let products = [];
-let selectedGame = "Semua";
-let selectedTab = "Semua";
-let devLoggedIn = false;
+
+let currentTab = "semua";
+
+let selectedGame = "";
 
 
-/* =========================
+/* =========================================
    LOAD PRODUCTS
-========================= */
+========================================= */
 
 async function loadProducts(){
-
-  const container =
-    document.getElementById("products");
-
-  container.innerHTML =
-    '<div class="loading">Memuat produk...</div>';
 
   const { data, error } =
     await supabaseClient
       .from("product")
       .select("*")
-      .order("created_at", {
-        ascending:false
-      });
+      .order("created_at", {ascending:false});
 
   if(error){
 
     console.error(error);
 
-    container.innerHTML = `
-      <div class="empty">
-        Gagal memuat produk.<br><br>
-        <small>${escapeHtml(error.message)}</small>
-      </div>
-    `;
+    document.getElementById("products").innerHTML =
+      `<div class="empty">
+        Gagal memuat produk.<br>
+        Periksa tabel Supabase.
+      </div>`;
 
     return;
   }
@@ -506,15 +746,13 @@ async function loadProducts(){
 
   renderProducts();
 
-  if(devLoggedIn){
-    renderAdminProducts();
-  }
+  renderAdminProducts();
 }
 
 
-/* =========================
+/* =========================================
    RENDER PRODUCTS
-========================= */
+========================================= */
 
 function renderProducts(){
 
@@ -528,76 +766,96 @@ function renderProducts(){
       .toLowerCase()
       .trim();
 
-  let filtered = [...products];
 
-  if(selectedGame !== "Semua"){
-    filtered =
-      filtered.filter(
-        p => p.game === selectedGame
-      );
-  }
+  let filtered = products.filter(p => {
 
-  if(selectedTab !== "Semua"){
-    filtered =
-      filtered.filter(
-        p => p.kategori === selectedTab
-      );
-  }
+    const nama =
+      String(p.nama || "").toLowerCase();
 
-  if(search){
-    filtered =
-      filtered.filter(p =>
-        String(p.nama || "")
-          .toLowerCase()
-          .includes(search)
-        ||
-        String(p.game || "")
-          .toLowerCase()
-          .includes(search)
-      );
-  }
+    const game =
+      String(p.game || "").toLowerCase();
+
+    const kategori =
+      String(p.kategori || "").toLowerCase();
+
+    const status =
+      String(p.status || "TERSEDIA").toUpperCase();
+
+
+    const matchSearch =
+      !search ||
+      nama.includes(search) ||
+      game.includes(search) ||
+      kategori.includes(search);
+
+
+    const matchTab =
+      currentTab === "semua" ||
+      status === currentTab;
+
+
+    const matchGame =
+      !selectedGame ||
+      game === selectedGame.toLowerCase();
+
+
+    return matchSearch && matchTab && matchGame;
+
+  });
+
 
   if(filtered.length === 0){
 
-    container.innerHTML = `
-      <div class="empty">
+    container.innerHTML =
+      `<div class="empty">
         Belum ada produk.
-      </div>
-    `;
+      </div>`;
 
     return;
   }
 
+
   container.innerHTML =
     filtered.map(p => {
 
-      let media = "";
+      const status =
+        String(p.status || "TERSEDIA").toUpperCase();
 
-      if(p.foto){
+      const sold =
+        status === "SOLD OUT";
 
-        media = `
-          <img
-            src="${escapeAttribute(p.foto)}"
-            alt="${escapeAttribute(p.nama || "Produk")}"
-            loading="lazy"
-          >
-        `;
 
-      }else{
+      const image =
+        p.foto ||
+        `https://placehold.co/600x600/111111/ffffff?text=${encodeURIComponent(
+          p.icon || "GAME"
+        )}`;
 
-        media = `
-          <div class="icon">
-            ${escapeHtml(p.icon || "🎮")}
-          </div>
-        `;
-      }
 
       return `
-        <div class="card">
 
-          ${media}
+        <article class="card">
 
-          <div class="info">
+          <div
+            class="product-image"
+            onclick="openImage('${escapeAttribute(image)}')"
+          >
+
+            <img
+              src="${escapeAttribute(image)}"
+              alt="${escapeAttribute(p.nama || '')}"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/600x600/111111/ffffff?text=APAN+STR'"
+            >
+
+            <span class="status ${sold ? "sold" : "available"}">
+              ${sold ? "SOLD OUT" : "TERSEDIA"}
+            </span>
+
+          </div>
+
+
+          <div class="card-body">
 
             <div class="game-name">
               ${escapeHtml(p.game || "")}
@@ -608,167 +866,253 @@ function renderProducts(){
             </div>
 
             <div class="price">
-              ${escapeHtml(p.harga || "")}
+              ${escapeHtml(p.harga || "-")}
             </div>
 
-            <button
-              class="buy"
-              onclick="beliProduk(${Number(p.id)})"
-            >
-              Beli
-            </button>
+
+            ${
+              sold
+
+              ?
+
+              `<button
+                class="buy sold-button"
+                disabled
+              >
+                SOLD OUT
+              </button>`
+
+              :
+
+              `<button
+                class="buy"
+                onclick="buyProduct('${p.id}')"
+              >
+                🛒 BELI VIA WHATSAPP
+              </button>`
+            }
 
           </div>
 
-        </div>
+        </article>
+
       `;
 
     }).join("");
+
 }
 
 
-/* =========================
-   FILTER
-========================= */
+/* =========================================
+   WHATSAPP
+========================================= */
 
-function selectGame(game, button){
-
-  selectedGame = game;
-
-  document
-    .querySelectorAll(".game")
-    .forEach(b => b.classList.remove("active"));
-
-  button.classList.add("active");
-
-  renderProducts();
-}
-
-
-function selectTab(tab, button){
-
-  selectedTab = tab;
-
-  document
-    .querySelectorAll(".tab")
-    .forEach(b => b.classList.remove("active"));
-
-  button.classList.add("active");
-
-  renderProducts();
-}
-
-
-/* =========================
-   BUY
-========================= */
-
-function beliProduk(id){
+function buyProduct(id){
 
   const product =
-    products.find(
-      p => Number(p.id) === Number(id)
-    );
+    products.find(p => String(p.id) === String(id));
 
   if(!product) return;
 
-  alert(
-    "Produk: " +
-    product.nama +
-    "\nHarga: " +
-    product.harga +
-    "\n\nSilakan lanjutkan pembayaran sesuai sistem toko."
-  );
+
+  if(
+    !WHATSAPP_NUMBER ||
+    WHATSAPP_NUMBER.includes("XXXXXXXX")
+  ){
+
+    alert(
+      "Nomor WhatsApp belum diatur di index.html."
+    );
+
+    return;
+  }
+
+
+  const message =
+`Halo APAN STR 👋
+
+Saya ingin membeli:
+
+Produk: ${product.nama}
+Game: ${product.game}
+Harga: ${product.harga}
+Status: ${product.status || "TERSEDIA"}
+
+Apakah produk masih tersedia?`;
+
+
+  const url =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(message);
+
+
+  window.open(url,"_blank");
+
 }
 
 
-/* =========================
-   DEV
-========================= */
+/* =========================================
+   IMAGE FULLSCREEN
+========================================= */
+
+function openImage(url){
+
+  document.getElementById("fullImage").src = url;
+
+  document
+    .getElementById("imageModal")
+    .classList.add("show");
+
+}
+
+
+function closeImageModal(){
+
+  document
+    .getElementById("imageModal")
+    .classList.remove("show");
+
+}
+
+
+/* =========================================
+   TABS
+========================================= */
+
+function setTab(tab,button){
+
+  currentTab = tab;
+
+  document
+    .querySelectorAll(".tab")
+    .forEach(x => x.classList.remove("active"));
+
+  button.classList.add("active");
+
+  renderProducts();
+
+}
+
+
+/* =========================================
+   GAME FILTER
+========================================= */
+
+function selectGame(game){
+
+  selectedGame =
+    selectedGame === game
+      ? ""
+      : game;
+
+  renderProducts();
+
+}
+
+
+/* =========================================
+   DEV LOGIN
+========================================= */
 
 function openDev(){
 
-  document
-    .getElementById("devOverlay")
-    .style.display = "block";
-}
-
-
-function closeDev(){
-
-  document
-    .getElementById("devOverlay")
-    .style.display = "none";
-}
-
-
-function loginDev(){
-
   const password =
-    document
-      .getElementById("devPassword")
-      .value;
+    prompt("Masukkan password DEV:");
 
-  if(password === "APAN123"){
-
-    devLoggedIn = true;
-
-    document
-      .getElementById("loginBox")
-      .classList.add("hidden");
-
-    document
-      .getElementById("adminBox")
-      .classList.remove("hidden");
-
-    renderAdminProducts();
-
-  }else{
+  if(password !== "APAN123"){
 
     alert("Password salah.");
 
+    return;
   }
+
+
+  document
+    .getElementById("devPanel")
+    .classList.toggle("show");
+
 }
 
 
-/* =========================
-   ADD PRODUCT
-========================= */
+/* =========================================
+   PREVIEW IMAGE
+========================================= */
 
-async function addProduct(){
+function previewImage(event){
 
-  if(!devLoggedIn){
-    alert("Silakan login DEV.");
-    return;
-  }
+  const file =
+    event.target.files[0];
+
+  if(!file) return;
+
+
+  const preview =
+    document.getElementById("preview");
+
+  preview.src =
+    URL.createObjectURL(file);
+
+  preview.style.display = "block";
+
+}
+
+
+/* =========================================
+   SAVE PRODUCT
+========================================= */
+
+async function saveProduct(event){
+
+  event.preventDefault();
+
+
+  const editId =
+    document.getElementById("editId").value;
+
 
   const nama =
     document.getElementById("nama").value.trim();
 
   const game =
-    document.getElementById("game").value;
+    document.getElementById("game").value.trim();
 
   const harga =
     document.getElementById("harga").value.trim();
 
   const kategori =
-    document.getElementById("kategori").value;
+    document.getElementById("kategori").value.trim();
 
   const icon =
     document.getElementById("icon").value.trim();
 
+  const status =
+    document.getElementById("status").value;
+
+
   const file =
     document.getElementById("foto").files[0];
 
-  if(!nama || !harga){
 
-    alert("Nama produk dan harga wajib diisi.");
-    return;
+  let foto = "";
+
+
+  /* Jika edit, gunakan foto lama */
+
+  if(editId){
+
+    const old =
+      products.find(
+        p => String(p.id) === String(editId)
+      );
+
+    foto = old?.foto || "";
+
   }
 
-  let fotoUrl = null;
 
-  /* Upload foto ke bucket PRODUCT */
+  /* Upload foto baru */
 
   if(file){
 
@@ -776,7 +1120,6 @@ async function addProduct(){
       file.name.split(".").pop();
 
     const fileName =
-      "produk/" +
       Date.now() +
       "-" +
       Math.random()
@@ -785,212 +1128,349 @@ async function addProduct(){
       "." +
       extension;
 
+
     const { error: uploadError } =
       await supabaseClient
         .storage
         .from("product")
-        .upload(
-          fileName,
-          file,
-          {
-            upsert:false,
-            contentType:file.type
-          }
-        );
+        .upload(fileName,file);
+
 
     if(uploadError){
 
       console.error(uploadError);
 
       alert(
-        "Foto gagal diupload:\n" +
-        uploadError.message
+        "Foto gagal diupload. Periksa Storage bucket 'product'."
       );
 
       return;
     }
 
-    const { data:urlData } =
+
+    const { data } =
       supabaseClient
         .storage
         .from("product")
         .getPublicUrl(fileName);
 
-    fotoUrl =
-      urlData.publicUrl;
+
+    foto = data.publicUrl;
+
   }
 
 
-  /* Insert ke tabel PRODUCT */
+  const data = {
 
-  const produkBaru = {
-    nama:nama,
-    game:game,
-    harga:harga,
-    kategori:kategori,
-    icon:icon || null,
-    foto:fotoUrl
+    nama,
+    game,
+    harga,
+    kategori: kategori || null,
+    icon: icon || null,
+    foto: foto || null,
+    status
+
   };
 
 
-  const { error } =
-    await supabaseClient
-      .from("product")
-      .insert([produkBaru]);
+  let result;
 
 
-  if(error){
+  if(editId){
 
-    console.error(error);
+    result =
+      await supabaseClient
+        .from("product")
+        .update(data)
+        .eq("id",editId);
+
+  }else{
+
+    result =
+      await supabaseClient
+        .from("product")
+        .insert([data]);
+
+  }
+
+
+  if(result.error){
+
+    console.error(result.error);
 
     alert(
-      "Produk gagal ditambahkan:\n" +
-      error.message
+      "Gagal menyimpan produk:\n" +
+      result.error.message
     );
 
     return;
   }
 
 
-  alert("Produk berhasil ditambahkan.");
+  alert(
+    editId
+      ? "Produk berhasil diperbarui!"
+      : "Produk berhasil ditambahkan!"
+  );
 
-  document.getElementById("nama").value = "";
-  document.getElementById("harga").value = "";
-  document.getElementById("icon").value = "";
-  document.getElementById("foto").value = "";
+
+  cancelEdit();
 
   await loadProducts();
+
 }
 
 
-/* =========================
+/* =========================================
+   EDIT PRODUCT
+========================================= */
+
+function editProduct(id){
+
+  const p =
+    products.find(
+      x => String(x.id) === String(id)
+    );
+
+  if(!p) return;
+
+
+  document.getElementById("editId").value =
+    p.id;
+
+  document.getElementById("nama").value =
+    p.nama || "";
+
+  document.getElementById("game").value =
+    p.game || "";
+
+  document.getElementById("harga").value =
+    p.harga || "";
+
+  document.getElementById("kategori").value =
+    p.kategori || "";
+
+  document.getElementById("icon").value =
+    p.icon || "";
+
+  document.getElementById("status").value =
+    p.status || "TERSEDIA";
+
+
+  const preview =
+    document.getElementById("preview");
+
+
+  if(p.foto){
+
+    preview.src = p.foto;
+
+    preview.style.display = "block";
+
+  }else{
+
+    preview.style.display = "none";
+
+  }
+
+
+  document.getElementById("saveButton").innerText =
+    "💾 Simpan Perubahan";
+
+
+  document
+    .getElementById("devPanel")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================
+   CANCEL EDIT
+========================================= */
+
+function cancelEdit(){
+
+  document.querySelector(".form").reset();
+
+  document.getElementById("editId").value = "";
+
+  document.getElementById("preview").style.display =
+    "none";
+
+  document.getElementById("saveButton").innerText =
+    "➕ Tambah Produk";
+
+}
+
+
+/* =========================================
    ADMIN PRODUCTS
-========================= */
+========================================= */
 
 function renderAdminProducts(){
 
-  const box =
+  const container =
     document.getElementById("adminProducts");
+
 
   if(!products.length){
 
-    box.innerHTML =
-      '<p style="color:#777;margin-top:10px">Belum ada produk.</p>';
+    container.innerHTML =
+      `<div class="empty">
+        Belum ada produk.
+      </div>`;
 
     return;
   }
 
-  box.innerHTML =
+
+  container.innerHTML =
     products.map(p => {
 
       const image =
-        p.foto
-          ? `<img src="${escapeAttribute(p.foto)}">`
-          : `<div style="
-                width:50px;
-                height:50px;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-size:25px;
-                background:#222;
-                border-radius:8px;
-              ">${escapeHtml(p.icon || "🎮")}</div>`;
+        p.foto ||
+        "https://placehold.co/100x100/111111/ffffff?text=GAME";
+
 
       return `
+
         <div class="admin-item">
 
-          ${image}
+          <img
+            src="${escapeAttribute(image)}"
+          >
 
-          <div class="admin-text">
-            <b>${escapeHtml(p.nama || "")}</b><br>
-            <span style="color:#888">
+          <div class="admin-info">
+
+            <b>
+              ${escapeHtml(p.nama || "")}
+            </b>
+
+            <small>
               ${escapeHtml(p.game || "")}
-            </span><br>
-            <span style="color:#a78bfa">
+              ·
               ${escapeHtml(p.harga || "")}
-            </span>
+              ·
+              ${escapeHtml(p.status || "TERSEDIA")}
+            </small>
+
           </div>
 
-          <button
-            class="delete"
-            onclick="deleteProduct(${Number(p.id)})"
-          >
-            Hapus
-          </button>
+
+          <div class="admin-actions">
+
+            <button
+              class="edit-btn"
+              onclick="editProduct('${p.id}')"
+            >
+              ✏️
+            </button>
+
+            <button
+              class="delete-btn"
+              onclick="deleteProduct('${p.id}')"
+            >
+              🗑
+            </button>
+
+          </div>
 
         </div>
+
       `;
 
     }).join("");
+
 }
 
 
-/* =========================
-   DELETE PRODUCT
-========================= */
+/* =========================================
+   DELETE
+========================================= */
 
 async function deleteProduct(id){
 
-  if(!confirm("Hapus produk ini?")){
-    return;
-  }
+  const p =
+    products.find(
+      x => String(x.id) === String(id)
+    );
+
+
+  if(!p) return;
+
+
+  const yes =
+    confirm(
+      `Hapus produk "${p.nama}"?`
+    );
+
+
+  if(!yes) return;
+
 
   const { error } =
     await supabaseClient
       .from("product")
       .delete()
-      .eq("id", id);
+      .eq("id",id);
+
 
   if(error){
 
-    console.error(error);
-
     alert(
-      "Produk gagal dihapus:\n" +
+      "Gagal menghapus:\n" +
       error.message
     );
 
     return;
   }
 
-  alert("Produk berhasil dihapus.");
 
   await loadProducts();
+
 }
 
 
-/* =========================
-   SECURITY DISPLAY HELPERS
-========================= */
+/* =========================================
+   SECURITY HELPERS
+========================================= */
 
 function escapeHtml(value){
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
 }
 
 
 function escapeAttribute(value){
 
   return escapeHtml(value);
+
 }
 
 
-/* =========================
-   AUTO REFRESH
-========================= */
+/* =========================================
+   START
+========================================= */
 
 loadProducts();
+
+
+/* Auto refresh */
 
 setInterval(
   loadProducts,
   15000
 );
+
 </script>
 
 </body>
